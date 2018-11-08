@@ -3,6 +3,10 @@
 - git merge [branch]
 - git remote
 - git add .
+- git add -A
+- git add -u
+- git status
+- git diff
 - git commit -m "msg"
 
 # Issue
