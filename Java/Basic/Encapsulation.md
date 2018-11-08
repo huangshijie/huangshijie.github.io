@@ -1,16 +1,17 @@
-#封装(Encapsulation)
+# 封装(Encapsulation)
 
-##Before
+## Before
 封装是软件设计的基本原则之一。
 又叫信息隐藏(Information hiding)
 
-##What
+## What
 隐藏实现细节，仅提供API。模块之间通过API通信。
 
-##How
+## How
+Java提供了很多机制来实现封装
+- 访问控制机制
 
-
-##Why
+## Why
 解除了模块之间的耦合关系。
 - 对模块封装之后，虽然不能带来更好的调试。但是可以看出哪个模块影响了整体的性能。
 - 提高了软件的重用性。
