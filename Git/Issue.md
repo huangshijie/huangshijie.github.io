@@ -8,6 +8,7 @@
 - git status
 - git diff
 - git commit -m "msg"
+- git cherry-pick [hashcode]
 
 # Issue
 - After added ssh key to github, still need to provide username and password when I did push operation.
