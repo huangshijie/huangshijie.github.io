@@ -25,3 +25,22 @@ We can use ssh of repo to replace https of repo to change paramter **remote** in
 ```
 remote = git@github.com:******
 ```
+
+---
+
+- First time clone git from github, then push code to this repo
+  
+```
+C:\Git\bin\git.exe push --recurse-submodules=check --progress "origin" refs/heads/master:refs/heads/master
+Fatal: HttpRequestException encountered.
+bash: /dev/tty: No such device or address
+error: failed to execute prompt script (exit code 1)
+fatal: could not read Username for 'https://github.com': Invalid argument
+Done
+```
+
+```
+Update git version
+```
+
+---
