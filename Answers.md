@@ -6,6 +6,9 @@ static
  静态内部类 -> 如何实例化内部类，为什么要使用内部类，面向对象的特性有哪些
  静态导包 -> 优缺点，过度地使用静态导入会在一定程度上降低代码的可读性。
 ```
+
+Private 是否安全？反射照样可以访问private的
+
 ```
 final
  final、finally与finalize的区别 1
@@ -40,6 +43,10 @@ transient
 **线程之间如何共享数据**
 > 什么是线程安全？
 > 四个线程统计数据，第五个线程进行汇总计算，大致说下思路
+>> 1. join
+>> 2. concurrent, java.util.concurrent.CountDownLatch
+CountDownLatch是通过一个计数器来实现的，计数器的初始值为线程的数量。每当一个线程完成了自己的任务后，计数器的值就会减1。当计数器值到达0时，它表示所有的线程已经完成了任务，然后在闭锁上等待的线程就可以恢复执行任务。
+
 ---
 **说出一种设计模式，并且简单写下它的实现**
 
@@ -47,3 +54,16 @@ transient
 **SQL优化**
 > 数据库索引
 > 数据库索引的数据结构基础，B+tree
+
+---
+Spring reference
+Spring Bean的生命周期
+Git
+Cloud Foundry Application Development
+Kafka, Cassandra, Spark
+
+zookeeper 
+kafka 提供了两套 consumer API：
+
+1. The high-level Consumer API
+2. The SimpleConsumer API
