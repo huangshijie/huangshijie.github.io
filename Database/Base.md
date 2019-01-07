@@ -20,5 +20,5 @@ SQL (Structured Query Language) 数据库，指关系型数据库
 NoSQL（Not Only SQL）泛指非关系型数据库
  - Key-Value数据库, 如Redis
  - Document-based数据库, 如MongoDB
- - Column-based数据库, 如Cassandra
+ - Column-based数据库,结构化或者半结构化数据(例如log，一行就是一条数据，用逗号分隔) 如Cassandra
 

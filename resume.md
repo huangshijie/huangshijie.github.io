@@ -10,7 +10,7 @@
 我在该项目组主要负责前端UI的开发。同时在项目初期，前端UI开发需要依赖SAP的WebIDE进行开发，开发调试较为困难。为了提高开发效率，我自己开发了一个UI本地化开发组件，并在项目组内成功推广。该组件可以自由配置后端数据接口，配置Authoritarian认证，实现请求转发，帮助前端同事进行本地开发。在项目后期，我也接手了部分后端同事工作，通过Anltr的类库，实现自定义语法分析。
 
 ### Golbal Track&Trave (GTT)项目 (2016年6月 ~ 2017年11月)
-我在该项目组中主要负责前期项目PoC的开发，以及Relase之后，配合销售进行一些用户定制化开发。该项目目前已经成功release,并且销售出两单。
+在该
 
 ### 其他项目
 在我加入SAP的第一年，主要是参与一些联合创新项目的开发。我参与开发的GTT的PoC项目，在2016年8月的SAP Summit以及同年11月的中国工业博览会上进行展示，并且广受好评。该项目主要是和Intel进行联合创新，之后孵化出GTT项目。
@@ -29,9 +29,9 @@
 
 # 技能清单
 - 开发语言：Java/Javascript/Python
-- Web框架：Spring/Hibernate/Struts2/Mybatis/Olingo
+- Web框架：Spring/Hibernate/Struts2/Mybatis/Olingo/Netty
 - 前端框架：Bootstrap/SAP UI5/Vue
-- 数据库相关：MySQL/Hana
+- 数据库相关：MySQL/Hana/Redis
 - 版本管理、文档和自动化部署工具：Git/Jenkins/NPM/Grunt 
 - 测试相关：Selenium/Junit/Qunit
-- 云平台：SAP Cloud Platform
+- 云平台：SAP Cloud Platform/Spark/Kafka
