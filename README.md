@@ -39,3 +39,21 @@ https://juejin.im/entry/5a90ffa56fb9a0634514d32b
 
 https://www.cnblogs.com/xrq730/p/5260294.html
 
+http://www.importnew.com/12773.html
+
+https://www.cnblogs.com/wang-meng/p/5701982.html
+
+http://www.importnew.com/19538.html
+
+
+# Apply
+
+> Bytedance
+> https://job.bytedance.com/job/detail/25204
+> https://job.bytedance.com/job/detail/28096
+> https://job.bytedance.com/job/detail/13157
+
+
+> Google
+> https://careers.google.com/jobs/results/5610194505760768
+> 
