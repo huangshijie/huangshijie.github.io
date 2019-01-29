@@ -34,4 +34,4 @@
 - 数据库相关：MySQL/Hana/Redis
 - 版本管理、文档和自动化部署工具：Git/Jenkins/NPM/Grunt 
 - 测试相关：Selenium/Junit/Qunit
-- 云平台：SAP Cloud Platform/Spark/Kafka
+- 云计算大数据相关：SAP Cloud Platform/Spark/Kafka

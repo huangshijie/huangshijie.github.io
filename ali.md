@@ -1,0 +1,11 @@
+- 如何判断Set不重复
+- equals为什么要重写hashcode方法
+- 双亲委派
+- 类加载器有几种，分别做什么用的
+- 线程池
+- JMM
+- 自己实现spring的bean注入，byname
+- byname bytype
+- bean的生命周期
+- spring的mvc生命周期
+- 懒汉模式，变量上要不要加volatile

@@ -1,0 +1,3 @@
+
+## HashMap
+DEFAULT_LOAD_FACTOR
