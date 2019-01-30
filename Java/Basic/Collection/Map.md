@@ -1,7 +1,11 @@
 参考链接：
+
 https://www.cnblogs.com/chengxiao/p/6059914.html
 
 https://www.jianshu.com/p/03d0e77f182c
+
+http://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/
+
 
 作为一个存储结构来说，查找和插入可以看作是硬币的两面，查找快，插入势必会慢；插入快，查找势必会慢
 
@@ -9,7 +13,7 @@ https://www.jianshu.com/p/03d0e77f182c
 
 
 
-## HashMap
+## HashMap
 ### WHAT
 下面就是HashMap的主体，一个Node<K, V>的数组
 ```
@@ -27,6 +31,23 @@ static class Node<K,V> implements Map.Entry<K,V> {
 }
 ```
 
+```
+HashMap<String, Integer> h = new HashMap<String, Integer>();
+		
+h.put("key1", 1);
+h.put("kkk2", 2);
+h.put("eee3", 3);
+h.put("yyy4", 4);
+h.put("kkk5", 5);
+h.put("eee6", 6);
+h.put("yyy7", 7);
+
+for(Entry<String, Integer> entry : h.entrySet()) {
+	System.out.println(entry.toString());
+}
+```
+![Debug HashMap Instance](https://github.com/huangshijie/ImgRep/blob/master/debug%20hashmap%20instance.png)
+
 ### HOW
 #### 构造函数
 一共有四个构造函数，前三种是使用自定义或者默认初试容量(initialCapacity)和加载因子(loadFactor)来创建一个空的HashMap；第四个是使用一个相同映射的特殊Map，来创建一个新的HashMap，这里的初试容量和加载因子都是取的默认值。
@@ -43,35 +64,57 @@ public HashMap()
 public HashMap(Map<? extends K, ? extends V> m)
 ```
 
+```
+final Node<K,V>[] resize()
+```
+
 #### 增
+
+先遍历查看新增Node在原来的HashMap中存不存在，如果存在就覆盖，不存在就新增。如果新增之后，链表的长度大于设定的极限(threshold)，则将该链表进行树化(treeifyBin)。
+
+hash()方法主要是调用Object.hashCode()方法，hashCode是
+```
+static final int hash(Object key)
+```
+
+```
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+                   boolean evict) 
+```
+
+```
+final TreeNode<K,V> putTreeVal(HashMap<K,V> map, Node<K,V>[] tab,
+                                       int h, K k, V v)
+```
+
+```
+final void treeifyBin(Node<K,V>[] tab, int hash)
+```
+
+```
+// Callbacks to allow LinkedHashMap post-actions
+void afterNodeAccess(Node<K,V> p) { }
+void afterNodeInsertion(boolean evict) { }
+void afterNodeRemoval(Node<K,V> p) { }
+```
+
 
 #### 删
 
 #### 改
 
 #### 查
+get和containsKey都会调用getNode，是get方法的具体实现
 
-getNode
+正如HashMap可以被看作是数组与链表的结合体，令**i = (n - 1) & hash**，其中n为table的长度，hash为key的hash值，对象会存储在数组中坐标为 *i* 所在的位置。
+
+在getNode中有两个参数，一个hash是hash(key)，即key的哈希值，另一个key就是key对象。
+所以在根据这个key进行查找的时候，首先根据key的hash值获得数组中对应位置的**Node = table[(n - 1) & hash]**。
+
+然后以这个Node为链表的第一个节点，进行遍历，中间也要考虑这个Node是否为TreeNode，是的话，用treeNode的方式getTreeNode进行遍历。不是的话，就说明这个链表是一个普通的链表，直接do...while...遍历
+
 ```
-final Node<K,V> getNode(int hash, Object key) {
-    Node<K,V>[] tab; Node<K,V> first, e; int n; K k;
-    if ((tab = table) != null && (n = tab.length) > 0 &&
-        (first = tab[(n - 1) & hash]) != null) {
-        if (first.hash == hash && // always check first node
-            ((k = first.key) == key || (key != null && key.equals(k))))
-            return first;
-        if ((e = first.next) != null) {
-            if (first instanceof TreeNode)
-                return ((TreeNode<K,V>)first).getTreeNode(hash, key);
-            do {
-                if (e.hash == hash &&
-                    ((k = e.key) == key || (key != null && key.equals(k))))
-                    return e;
-            } while ((e = e.next) != null);
-        }
-    }
-    return null;
-}
+final Node<K,V> getNode(int hash, Object key)
 ```
 #### 其他
 
