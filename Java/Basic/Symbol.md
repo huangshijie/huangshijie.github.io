@@ -30,9 +30,10 @@ public native int hashCode();
 
 ---
 
-符号 ^ 
+符号 ^ ，位异或运算
 
 经常看到代码包含
 ```
 Objects.hashCode(e1) ^ Objects.hashCode(e2)
 ```
+

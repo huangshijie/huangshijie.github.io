@@ -5,3 +5,6 @@ private
 
 
 final
+
+
+instanceof
