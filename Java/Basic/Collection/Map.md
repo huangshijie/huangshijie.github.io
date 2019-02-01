@@ -6,6 +6,9 @@ https://www.jianshu.com/p/03d0e77f182c
 
 http://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/
 
+https://www.cnblogs.com/killbug/p/7679043.html
+
+http://www.importnew.com/31278.html
 
 作为一个存储结构来说，查找和插入可以看作是硬币的两面，查找快，插入势必会慢；插入快，查找势必会慢
 
@@ -13,8 +16,8 @@ http://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%
 
 
 
-## HashMap
-### WHAT
+# HashMap
+## WHAT
 下面就是HashMap的主体，一个Node<K, V>的数组
 ```
 transient Node<K,V>[] table;
@@ -30,6 +33,8 @@ static class Node<K,V> implements Map.Entry<K,V> {
     ...
 }
 ```
+
+举个例子：
 
 ```
 HashMap<String, Integer> h = new HashMap<String, Integer>();
@@ -48,11 +53,56 @@ for(Entry<String, Integer> entry : h.entrySet()) {
 ```
 ![Debug HashMap Instance](https://github.com/huangshijie/ImgRep/blob/master/debug%20hashmap%20instance.png)
 
-### HOW
-#### 构造函数
-一共有四个构造函数，前三种是使用自定义或者默认初试容量(initialCapacity)和加载因子(loadFactor)来创建一个空的HashMap；第四个是使用一个相同映射的特殊Map，来创建一个新的HashMap，这里的初试容量和加载因子都是取的默认值。
+从上面的源码，以及debug调试截图可以看出，首先数据存入的是HashMap h的实例变量table中。*table*是一个数组，但是数据存入的时候，却没有连续存入。
+这是因为在数据存入的时候，会计算在数组中存入时候的下标。
 
-注意这里前三种，在初始化的时候，并没有给table开辟内存空间，第四种会根据**Map<? extends K, ? extends V> m**的大小来设置table的最大容量，加载因子还是使用默认的
+比如上面源码中，存入key为"eee3"调用Object.hashCode()计算得到3109153，二进制为1011110111000100100001。HashMap.hash(K key)将该二进制与自己无符号右移16位的二进制数，进行位异或运算，即1011110111000100100001 ^ 0000000000000000101111 = 0000000000000000100001。将得到的值与数组长度进行与运算，即0000000000000000100001 & 0000000000000000001111 = 1，即转换成十进制1，即存在数组下标为1的位置。
+
+---
+
+### 普通链表
+
+```
+static class Node<K,V> implements Map.Entry<K,V> {
+    final int hash;
+    final K key;
+    V value;
+    Node<K,V> next;
+    ...
+}
+```
+
+---
+### 红黑树(R-B Tree)
+一旦因为hash冲突，导致链表过长，则会将该链表树化()，将链表转为红黑树。
+#### 特性
+- 每个节点要么是红的，要么是黑的。
+- 根节点是黑的。
+- 每个叶节点（叶节点即指树尾端NIL指针或NULL节点）是黑的。
+- 如果一个节点是红的，那么它的两个儿子都是黑的。
+- 对于任一节点而言，其到叶节点树尾端NIL指针的每一条路径都包含相同数目的黑节点。
+
+#### 变色
+
+#### 左旋
+
+#### 右旋
+
+```
+static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
+    TreeNode<K,V> parent;  // red-black tree links
+    TreeNode<K,V> left;
+    TreeNode<K,V> right;
+    TreeNode<K,V> prev;    // needed to unlink next upon deletion
+    boolean red;
+    ...
+}
+```
+
+---
+
+## HOW
+### 构造函数
 
 ```
 public HashMap(int initialCapacity, float loadFactor) 
@@ -63,33 +113,45 @@ public HashMap()
 
 public HashMap(Map<? extends K, ? extends V> m)
 ```
+一共有四个构造函数，前三种是使用自定义或者默认初试容量(initialCapacity)和加载因子(loadFactor)来创建一个空的HashMap；第四个是使用一个相同映射的特殊Map，来创建一个新的HashMap，这里的初试容量和加载因子都是取的默认值。
 
-```
-final Node<K,V>[] resize()
-```
+注意这里前三种，在初始化的时候，并没有给table开辟内存空间，第四种会根据**Map<? extends K, ? extends V> m**的大小来设置table的最大容量，加载因子还是使用默认的
 
-#### 增
 
-先遍历查看新增Node在原来的HashMap中存不存在，如果存在就覆盖，不存在就新增。如果新增之后，链表的长度大于设定的极限(threshold)，则将该链表进行树化(treeifyBin)。
 
-hash()方法主要是调用Object.hashCode()方法，hashCode是
+
+### 增
+
 ```
 static final int hash(Object key)
 ```
+hash()方法主要是调用Object.hashCode()方法，hashCode是
 
 ```
 final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
                    boolean evict) 
 ```
+- 判断Node数组是否为空，是的话，则调用resize方法，相当于初始化这个Node的table。
+- 根据(n - 1) & hash，得到该元素在数组中的下标。
+- 若该位置为空，则直接new一个Node，赋值给该数组
+- 若该位置不为空，说明hash方法返回的值相同，则要么发生了hash碰撞，要么key已经存在该数组中了。
+- 若发生了hash碰撞，则以链表或是treeNode的方式插入数据，如果链表长度过长，大于threshold，则将该链表树化(treeifyBin)。
+- 若key存在该数组中，则覆盖。
 
 ```
 final TreeNode<K,V> putTreeVal(HashMap<K,V> map, Node<K,V>[] tab,
                                        int h, K k, V v)
 ```
+树版putVal
 
 ```
 final void treeifyBin(Node<K,V>[] tab, int hash)
 ```
+
+```
+final Node<K,V>[] resize()
+```
+
 
 ```
 // Callbacks to allow LinkedHashMap post-actions
@@ -99,47 +161,56 @@ void afterNodeRemoval(Node<K,V> p) { }
 ```
 
 
-#### 删
+### 删
 
-#### 改
+### 改
 
-#### 查
+### 查
 get和containsKey都会调用getNode，是get方法的具体实现
 
-正如HashMap可以被看作是数组与链表的结合体，令**i = (n - 1) & hash**，其中n为table的长度，hash为key的hash值，对象会存储在数组中坐标为 *i* 所在的位置。
+正如HashMap可以被看作是数组与链表的结合体，令**i = (n - 1) & hash**，其中n为table的长度，hash为key的hash值，对象会存储在数组中坐标为 *i* 所在的位置。
 
-在getNode中有两个参数，一个hash是hash(key)，即key的哈希值，另一个key就是key对象。
-所以在根据这个key进行查找的时候，首先根据key的hash值获得数组中对应位置的**Node = table[(n - 1) & hash]**。
+在getNode中有两个参数，一个hash是hash(key)，即key的哈希值，另一个key就是key对象。
+所以在根据这个key进行查找的时候，首先根据key的hash值获得数组中对应位置的**Node = table[(n - 1) & hash]**。
 
-然后以这个Node为链表的第一个节点，进行遍历，中间也要考虑这个Node是否为TreeNode，是的话，用treeNode的方式getTreeNode进行遍历。不是的话，就说明这个链表是一个普通的链表，直接do...while...遍历
+然后以这个Node为链表的第一个节点，进行遍历，中间也要考虑这个Node是否为TreeNode，是的话，用treeNode的方式getTreeNode进行遍历。不是的话，就说明这个链表是一个普通的链表，直接do...while...遍历
 
 ```
 final Node<K,V> getNode(int hash, Object key)
 ```
-#### 其他
+### 其他
 
 
-### WHY
-- 允许value和key为null
+## WHY
+- 允许value和key为null
 - 不同步
-- HashMap与HashTable大致相同，除了HashMap是不同步的，并且HashTable不接受为null的key和value
+- HashMap与HashTable大致相同，除了HashMap是不同步的，并且HashTable不接受为null的key和value
 - 可以把HashMap看成数组加链表的实现，如果元素太多了的话，会自动转成树就是(treefied，树化)来提高查找速度
 - HashMap由数组+链表组成，数组是HashMap的主体，链表主要是为了解决hash冲突
 - 一个HashMap实例有两个参数影响它的性能：初始容量和装载因子，容量是散列表中的桶数，初始容量只是创建散列表时的容量。装载因子是衡量散列表完整性的度量标准，允许在容量自动增加之前获得。当散列表中的Entry数超过了装载因子和当前容量的乘积，hash表就rehashed（即内部数据结构重建），使散列表大约有两倍buckets数。
 ```
 例如，当散列表的Entry数超过0.75*16时，就rehashed。因为碰撞，此时数组中可能还没有12个桶被占用。
 ```
-而为什么默认的装载因子是0.75，源代码如下：
+> 而为什么默认的装载因子是0.75，源代码如下：
 ```
 static final float DEFAULT_LOAD_FACTOR = 0.75f;
 ```
-作为一般规则，默认装载因子（.75）在时间和空间成本之间提供了良好的权衡。较高的值会减少空间开销，但会增加查找成本（反映在HashMap类的大多数操作中，包括get和put）。在设置其初始容量时，应考虑映射中的预期条目数及其装载因子，以便最小化重新散列操作的数量。如果初始容量大于最大条目数除以装载因子，则不会发生重新装载操作。
-- 如果说很多key有相同的hashcode，会降低hash table的表现。所以需要通过compareable，如果key支持java.lang.comparable，再进行一次排序插入进链表中，来降低影响
+> 作为一般规则，默认装载因子（.75）在时间和空间成本之间提供了良好的权衡。较高的值会减少空间开销，但会增加查找成本（反映在HashMap类的大多数操作中，包括get和put）。在设置其初始容量时，应考虑映射中的预期条目数及其装载因子，以便最小化重新散列操作的数量。如果初始容量大于最大条目数除以装载因子，则不会发生重新装载操作。
+- 如果说很多key有相同的hashcode，会降低hash table的表现。所以需要通过compareable，如果key支持java.lang.comparable，再进行一次排序插入进链表中，来降低影响
+
+- hash(key)核心hash算法，在长度为2的幂前提下，hash值高位下移16位，参与取模，降低碰撞，另外取模部分利用2的幂减1来做&操作提高了性能。
+
+- 继承Serializable接口，可是字段使用transient修饰，比如table,entrySet。原因是hashcode操作依赖jvm所处的环境因素,不同环境可能有不同的hash值，做一现成存储的内容既是序列化也无法通用.所以hashmap自己实现了writeObject和readObject，这里就需要知道java在序列化和反序列化一个类时是先调用writeObject和readObject,如果没有默认调用的是ObjectOutputStream的defaultWriteObject以及ObjectInputStream的defaultReadObject方法。
+
+
+
 
 TREEIFY_THRESHOLD
 
 
-HashMap扩容机制
+HashMap扩容机制，即什么时候Rehash
 
+
+# LinkedHashMap
 
 
