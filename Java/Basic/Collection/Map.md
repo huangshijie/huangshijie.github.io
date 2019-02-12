@@ -154,6 +154,7 @@ final Node<K,V>[] resize()
 
 
 ```
+// 在LinkedHashMap中有个排序的规则，是否按访问排序还是按插入排序，所以在HashMap中，就放了这三个空函数
 // Callbacks to allow LinkedHashMap post-actions
 void afterNodeAccess(Node<K,V> p) { }
 void afterNodeInsertion(boolean evict) { }
@@ -212,5 +213,59 @@ HashMap扩容机制，即什么时候Rehash
 
 
 # LinkedHashMap
+## WHAT
+有序map，且默认为插入顺序，不是线程安全的
 
+双端链表
+
+继承了HashMap，其中的节点Entry类也继承了HashMap中的Node类，并在基础上增加了before和after两个节点
+
+```
+为什么说LinkedHashMap不是线程安全的，我觉得在很多操作里类似replaceAll，都是通过判断
+
+int mc = modCount;
+if (modCount != mc)
+  throw new ConcurrentModificationException();
+
+但是这个操作并不是原子操作
+
+```
+
+```
+LinkedHashMap<String, Integer> map = new LinkedHashMap<String, Integer>();
+map.put("key1", 1);
+map.put("kkk2", 2);
+map.put("eee3", 3);
+map.put("yyy4", 4);
+map.put("kkk5", 5);
+map.put("eee6", 6);
+map.put("yyy7", 7);
+map.put("zzz7", 8);
+map.put("eee1", 9);
+```
+
+![LinkedHashMap Code Example](https://github.com/huangshijie/ImgRep/blob/master/LinkedHashMap%20Code%20Example.PNG)
+同样的通过上面的debug截图可以看出来，LinkedHashMap是HashMap的一个子类，他里面同样有一个table，但是他使用的元素是自己的静态内部类Entry，这个静态内部类是HashMap.Node的子类。在HashMap.Node的基础上增加了两个Entry类型的属性before和after，这样就将所有的元素构成了一个链表。
+上面的例子就可以画成如下图的结构。
+
+![LinkedHashMap Example Table Variables](https://github.com/huangshijie/ImgRep/blob/master/LinkedHashMap%20Example%20Table%20Variables.png)
+
+将上面的节点展开就可以得到一个链表如下图所示
+![LinkedHashMap Example LinkedList Variables](https://github.com/huangshijie/ImgRep/blob/master/LinkedHashMap%20Example%20LinkedList%20Variables.png)
+上图是插入排序，所以链表的顺序和插入的顺序有关，默认accessOrder为false
+
+## HOW
+### 构造函数
+![LinkedHashMap](https://github.com/huangshijie/ImgRep/blob/master/LinkedHashMap%20Outline.PNG)
+
+在HashMap的基础上增加了三个变量head，tail和accessOrder
+
+head和tail作为LinkedHashMap的两端，accessOrder控制的是元素存储在链表中的顺序
+如果accessOrder为true的话，则会把访问过的元素放在链表后面，放置顺序是访问的顺序 
+如果accessOrder为flase的话，则按插入顺序来遍历
+
+# TreeMap
+有序map
+
+# ConcurrentHasMap
 

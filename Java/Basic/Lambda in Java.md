@@ -24,3 +24,8 @@
 () -> { return 3.1415 };
 ```
 ## 函数式接口
+
+BiFunction
+
+
+BiConsumer
