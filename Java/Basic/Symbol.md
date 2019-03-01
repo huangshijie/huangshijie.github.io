@@ -68,3 +68,6 @@ Objects.hashCode(e1) ^ Objects.hashCode(e2)
 无符号右移，也叫逻辑右移，不论正负都补0；
 
 ```
+
+# 与运算
+& 与运算效率更高

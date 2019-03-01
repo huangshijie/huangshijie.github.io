@@ -210,7 +210,23 @@ TREEIFY_THRESHOLD
 
 
 HashMap扩容机制，即什么时候Rehash
+数组长度大于DEFAULT_LOAD_FACTOR*DEFAULT_INITIAL_CAPACITY，将数组扩容。
+链表长度大于8，就将链表树化。
+树的节点小于6，树变为链表。
 
+
+低十六位和高十六位做了个异或的运算
+
+```
+为什么是16
+
+因为在计算元素位置的时候，是通过16-1，二进制为1111，可以减少位置重复的概率。
+
+```
+
+```
+resize() 
+```
 
 # LinkedHashMap
 ## WHAT
@@ -246,7 +262,7 @@ map.put("eee1", 9);
 
 ![LinkedHashMap Code Example](https://github.com/huangshijie/ImgRep/blob/master/LinkedHashMap%20Code%20Example.PNG)
 同样的通过上面的debug截图可以看出来，LinkedHashMap是HashMap的一个子类，他里面同样有一个table，但是他使用的元素是自己的静态内部类Entry，这个静态内部类是HashMap.Node的子类。在HashMap.Node的基础上增加了两个Entry类型的属性before和after，这样就将所有的元素构成了一个链表。
-上面的例子就可以画成如下图的结构。
+上面的例子就可以画成如下图的结构。为了图例清晰，只画了after的箭头。
 
 ![LinkedHashMap Example Table Variables](https://github.com/huangshijie/ImgRep/blob/master/LinkedHashMap%20Example%20Table%20Variables.png)
 
@@ -264,8 +280,78 @@ head和tail作为LinkedHashMap的两端，accessOrder控制的是元素存储在
 如果accessOrder为true的话，则会把访问过的元素放在链表后面，放置顺序是访问的顺序 
 如果accessOrder为flase的话，则按插入顺序来遍历
 
+### 增
+LinkedHashMap没有put方法，直接调用的是HashMap的put方法，但是重写了部分方法，实现了能够将数据存入table中，并且构造一个双向链表的功能。
+重写了newNode方法，这样返回的就是LinkedHashMap.Entry<K,V>，同时将插入的新元素放在链表的尾部。
+```
+Node<K,V> newNode(int hash, K key, V value, Node<K,V> e) {
+  LinkedHashMap.Entry<K,V> p = new LinkedHashMap.Entry<K,V>(hash, key, value, e);
+  linkNodeLast(p);
+  return p;
+}
+```
+重写了afterNodeInsertion方法，本来在HashMap中是空方法的。
+```
+void afterNodeInsertion(boolean evict) { // possibly remove eldest
+  LinkedHashMap.Entry<K,V> first;
+  if (evict && (first = head) != null && removeEldestEntry(first)) {
+    K key = first.key;
+    removeNode(hash(key), key, null, false, true);
+  }
+}
+```
+HashMap.put()->HashMap.putVal()->
+
+### 查
+在这里要讲下LinkedHashMap中特有的访问排序，如果accessOrder为true，则调用afterNodeAccess方法。
+```
+public V get(Object key) {
+  Node<K,V> e;
+  if ((e = getNode(hash(key), key)) == null)
+    return null;
+  if (accessOrder)
+    afterNodeAccess(e);
+  return e.value;
+}
+```
+将访问过的元素挪到链表的最后
+```
+void afterNodeAccess(Node<K,V> e) { // move node to last
+  LinkedHashMap.Entry<K,V> last;
+  if (accessOrder && (last = tail) != e) {
+    LinkedHashMap.Entry<K,V> p = (LinkedHashMap.Entry<K,V>)e, b = p.before, a = p.after;
+    p.after = null;
+    if (b == null)
+      head = a;
+    else
+      b.after = a;
+    if (a != null)
+      a.before = b;
+    else
+      last = b;
+    if (last == null)
+      head = p;
+    else {
+      p.before = last;
+      last.after = p;
+    }
+    tail = p;
+    ++modCount;
+  }
+}
+```
+
+### 拓展
+LRU（Least recently used，最近最少使用）算法
+https://www.cnblogs.com/work115/p/5585341.html
+
 # TreeMap
 有序map
+containsKey、get、put、remove等操作的时间复杂度为log(n)
+
+**前驱结点**，节点val值小于该节点val值并且值最大的节点，在
+
+**后继节点**，节点val值大于该节点val值并且值最小的节点
 
 # ConcurrentHasMap
 

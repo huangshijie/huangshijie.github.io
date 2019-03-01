@@ -96,16 +96,18 @@ https://www.cnblogs.com/excellencesy/p/8614433.html
 - http 2 了解过吗
 - hashCode与equals的区别联系。
 - 自动拆装箱
--  
--  补充：转载自 https://kd.youth.cn/article/s?uid=6552956&app_version=1.2.3&sid=1102171&time=1523203767&signature=3NRxPz8j0mdBYbOGDW91lZB9zTXg0xE7yAXV56qwogJEpkLK2e&sign=e16778ec7cbf04ac3d572c20cf01aa20
-- 阿里巴巴java一面
+
+补充：转载自 https://kd.youth.cn/article/s?uid=6552956&app_version=1.2.3&sid=1102171&time=1523203767&signature=3NRxPz8j0mdBYbOGDW91lZB9zTXg0xE7yAXV56qwogJEpkLK2e&sign=e16778ec7cbf04ac3d572c20cf01aa20
+
+阿里巴巴java一面
 - 介绍一下Hashmap的原理
 - 介绍一下红黑树
 - 线程同步，并发操作怎么控制
 - 抽象工厂和工厂方法模式的区别
 - 工厂模式的思想
 - 描述struts的工作流程
-- 阿里巴巴java二面
+
+阿里巴巴java二面
 - 自我介绍
 - 对Spring的理解，项目中都用什么?
 - Arraylist的原理
