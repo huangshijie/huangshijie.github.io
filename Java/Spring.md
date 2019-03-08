@@ -6,6 +6,7 @@
 
 @Repository org.springframework.stereotype.Repository
 
+@EnableCaching
 ---
 
 **Bean的完整生命周期**

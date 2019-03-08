@@ -82,5 +82,12 @@ public static void deserializableClass(File file) throws Exception {
 4. 反序列化时，如果对象的属性有修改或删减，则修改的部分属性会丢失，但不会报错
 5. 反序列化时，如果serialVersionUID被修改，则反序列化时会失败
    
+### 引申
+
+#### Object.clone()
+ 
+
+
+
 Reference:
 将对象转成二进制数组的时候，对应数组表达的意思
