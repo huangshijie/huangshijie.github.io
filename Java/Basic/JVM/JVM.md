@@ -131,14 +131,30 @@ In JDK 8, classes metadata is now stored in the native heap and this space is ca
 
 综上所属，可以知道**字符串池**是在堆上创建的。
 
-一个有趣的String相关问题
+一个有趣的String.intern相关问题
 https://stackoverflow.com/questions/49964417/stringintern-the-confuse-about-the-result-of-the-intern
 
+中文版
+
+https://www.cnblogs.com/justcooooode/p/7603381.html
+
+Returns a canonical representation for the string object.
+
+A pool of strings, initially empty, is maintained privately by the class String.
+
+When the intern method is invoked, if the pool already contains a string equal to this String object as determined by the equals(Object) method, then the string from the pool is returned. Otherwise, this String object is added to the pool and a reference to this String object is returned.
+
+It follows that for any two strings s and t, s.intern() == t.intern() is true if and only if s.equals(t) is true.
+
+All literal strings and string-valued constant expressions are interned. String literals are defined in section 3.10.5 of the The Java™ Language Specification.
 
 
 
+
+---
 
 https://www.zhihu.com/question/31203609/answer/576030121
+
 
 值传递还是引用传递
 实参将访问对象的地址传递给了形参，然后看形参有没有重新new一个对象，重新指向了一个新的地址空间。
