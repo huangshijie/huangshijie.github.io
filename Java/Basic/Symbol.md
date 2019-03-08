@@ -18,7 +18,66 @@ if (foo.equals(bar) && foo.hashCode() == bar.hashCode()) {
 ```
 ---
 
-## 重写equal()时为什么也得重写hashCode()
+## 重写equals()时为什么也得重写hashCode()
+
+**重写equals方法时需要重写hashCode方法，主要是针对Map、Set等集合类型的使用**
+
+1. Map、Set等集合类型存放的对象必须是唯一的；
+
+2. 集合类判断两个对象是否相等，是先判断equals是否相等，如果equals返回TRUE，还要再判断HashCode返回值是否ture,只有两者都返回ture,才认为该两个对象是相等的。
+
+**同时**
+- equals()相等的两个对象，hashcode()一定相等； 
+- equals()不相等的两个对象，却并不能证明他们的hashcode()不相等。换句话说，equals()方法不相等的两个对象，hashcode()有可能相等。（我的理解是由于哈希码在生成的时候产生冲突造成的）。 
+- 反过来：hashcode()不等，一定能推出equals()也不等；hashcode()相等，equals()可能相等，也可能不等。
+
+拿String类举例，String中同时，重写了equals()和hashcode()方法。
+在equals方法中，首先调用 "==" 判断两个对象的内存地址是否一样，如果一样说明，他们引用到的是堆上同一个对象，所以相等。
+或者通过两个对象按顺序一个个char进行比较，如果每个char都相等，则说明他们相等。
+同样，重写的hashcode()方法中，是以31为权，每一位为字符的ASCII值进行运算，用自然溢出来等效取模。
+哈希计算公式可以计为s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+关于为什么取31为权，主要是因为31是一个奇质数，所以31*i=32*i-i=(i<<5)-i，这种位移与减法结合的计算相比一般的运算快很多。
+```
+    public boolean equals(Object anObject) {
+        if (this == anObject) {
+            return true;
+        }
+        if (anObject instanceof String) {
+            String anotherString = (String)anObject;
+            int n = value.length;
+            if (n == anotherString.value.length) {
+                char v1[] = value;
+                char v2[] = anotherString.value;
+                int i = 0;
+                while (n-- != 0) {
+                    if (v1[i] != v2[i])
+                        return false;
+                    i++;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+```
+
+```
+    public int hashCode() {
+        int h = hash;
+        if (h == 0 && value.length > 0) {
+            char val[] = value;
+
+            for (int i = 0; i < value.length; i++) {
+                h = 31 * h + val[i];
+            }
+            hash = h;
+        }
+        return h;
+    }
+```
+
+解释下第3点的使用范围，我的理解是在object、String等类中都能使用。在object类中，hashcode()方法是本地方法，返回的是对象的地址值，而object类中的equals()方法比较的也是两个对象的地址值，如果equals()相等，说明两个对象地址值也相等，当然hashcode()也就相等了；
+在String类中，equals()返回的是两个对象内容的比较，当两个对象内容相等时(比较的是内容的值)， Hashcode()方法根据String类的重写（第2点里面已经分析了）代码的分析，也可知道hashcode()返回结果也会相等。以此类推，可以知道Integer、Double等封装类中经过重写的equals()和hashcode()方法也同样适合于这个原则。当然没有经过重写的类，在继承了object类的equals()和hashcode()方法后，也会遵守这个原则。
 
 https://blog.csdn.net/javazejian/article/details/51348320
 
