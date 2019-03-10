@@ -41,30 +41,11 @@ Java虚拟机的生命周期，当一个java应用main函数启动时虚拟机�
 ![JVM Struture](https://github.com/huangshijie/ImgRep/blob/master/JVM.jpg)
 
 
-# Java虚拟机类加载机制
-
-![Class Life Circle](https://github.com/huangshijie/ImgRep/blob/master/class_life_circle.png)
-
-类被加载到虚拟机内存中，从开始到卸载为止，一共经历了七个阶段，
-
-## 加载
-
-## 验证
-
-## 准备
-
-## 解析
-
-## 初始化
 
 
 
 
-# Classload 类加载器
 
-主要的类加载器有两种系统级别的和用户自定义的。
-
-系统级别的有，bootstrao classload和extend
 
 将A.class装载到jvm的方法区，方法区中的这个字节文件会被虚拟机拿来new A字节码()，然后在堆内存生成了一个A字节码的对象，然后A字节码这个内存文件有两个引用一个指向A的class对象，一个指向加载自己的classLoader
 
