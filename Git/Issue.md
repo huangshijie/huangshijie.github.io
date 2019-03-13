@@ -44,3 +44,5 @@ Update git version
 ```
 
 ---
+
+![Git Command](https://github.com/huangshijie/ImgRep/blob/master/Git%2Bcheat%2Bsheet.jpg)

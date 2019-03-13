@@ -17,3 +17,4 @@ private Map<String,  Map<String, List<DurationEntry>>> durationPoolPerTenant = n
 
 主要的开发语言是Java，在项目中负责后端开发和Scrum master的角色。所在的部门是Supply Chain Networks，主要是负责SAP在供应链中，结合一些IoT设备对订单进行追踪与追溯。在进入SAP第一年主要参与PoC项目的开发，开发的项目参加过的大型展会有，16年与17年的工博会以及17年的SAP Select。
 之后17年、18年工作重心转移到正式产品的开发，在项目中也接触到了SAP UI5，做过一段时间的前端开发。
+

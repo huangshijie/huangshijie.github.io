@@ -2,12 +2,6 @@
 
 
 
-1、在java中守护线程和本地线程区别？
-java中的线程分为两种：守护线程（Daemon）和用户线程（User）。任何线程都可以设置为守护线程和用户线程，通过方法Thread.setDaemon(bool on)；true则把该线程设置为守护线程，反之则为用户线程。Thread.setDaemon()必须在Thread.start()之前调用，否则运行时会抛出异常。两者的区别： 唯一的区别是判断虚拟机(JVM)何时离开，Daemon是为其他线程提供服务，如果全部的User Thread已经撤离，Daemon 没有可服务的线程，JVM撤离。也可以理解为守护线程是JVM自动创建的线程（但不一定），用户线程是程序创建的线程；比如JVM的垃圾回收线程是一个守护线程，当所有线程已经撤离，不再产生垃圾，守护线程自然就没事可干了，当垃圾回收线程是Java虚拟机上仅剩的线程时，Java虚拟机会自动离开。扩展：Thread Dump打印出来的线程信息，含有daemon字样的线程即为守护进程，可能会有：服务守护进程、编译守护进程、windows下的监听Ctrl+break的守护进程、Finalizer守护进程、引用处理守护进程、GC守护进程。
-
-2、线程与进程的区别？
-进程是操作系统分配资源的最小单元，线程是操作系统调度的最小单元。一个程序至少有一个进程,一个进程至少有一个线程。
-
 3、什么是多线程中的上下文切换？
 多线程会共同使用一组计算机上的CPU，而线程数大于给程序分配的CPU数量时，为了让各个线程都有执行的机会，就需要轮转使用CPU。不同的线程切换使用CPU发生的切换数据等就是上下文切换。
 
@@ -215,19 +209,182 @@ SESSION有没有限制？有限制怎么办？
 问：分布式锁如何实现 
 答：基于数据库，基于缓存，基于zk三种。然后再把三种方案的优缺点说清楚。（参考：分布式锁的多种实现方式~）  
 问：关于缓存和ZK了解多少 
-答：常用缓存，redis，memcached等。当然还可以说memcached容易被总来做DDOS攻击（参考：<a href="http://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s/SrJBynh5dyOtyaNcQMZyhA" class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">GitHub遭受的DDoS攻击到底是个什么鬼？</a>）。ZK就简单介绍下原理，常用场景等。（参考：Zookeeper介绍（四）——Zookeeper中的基本概念）  
+答：常用缓存，redis，memcached等。当然还可以说memcached容易被总来做DDOS攻击（参考：GitHub遭受的DDoS攻击到底是个什么鬼？）。ZK就简单介绍下原理，常用场景等。（参考：Zookeeper介绍（四）——Zookeeper中的基本概念）  
 问：数据一致性怎么保证 
-答：先扯一段CAP和BASE（参考：<a href="http://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s/ZTGDdF9wgwJ-K30G9rW5Bw" class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">分布式的CAP理论</a>   和   ），再说说2PC，3PC（参考：<a href="http://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s/_v0y2XHT4MgbUO5PlDds-g" class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">深入理解分布式系统的2PC和3PC</a>）以及有啥缺点，过度目前常用的策略。比如最大努力通知，可靠消息最终一致性。TCC分布式事务等。在说下业务场景都有哪几个。  最终是如何选择的。最后再说一句：当然，数据一致性的最后一道防线还是人工介入。要做好数据对账，实时数据检验以及报警。保证可以及时发现线上问题。
-<figure><img src="https://pic1.zhimg.com/v2-600450a75c7b75cb8b00b58d4639d18c_b.jpg" data-caption="" data-size="normal" data-rawwidth="1087" data-rawheight="661" class="origin_image zh-lightbox-thumb" width="1087" data-original="https://pic1.zhimg.com/v2-600450a75c7b75cb8b00b58d4639d18c_r.jpg"></figure>
-</span>
+答：先扯一段CAP和BASE（参考：分布式的CAP理论<  和   ），再说说2PC，3PC（参考：深入理解分布式系统的2PC和3PC）以及有啥缺点，过度目前常用的策略。比如最大努力通知，可靠消息最终一致性。TCC分布式事务等。在说下业务场景都有哪几个。  最终是如何选择的。最后再说一句：当然，数据一致性的最后一道防线还是人工介入。要做好数据对账，实时数据检验以及报警。保证可以及时发现线上问题。
 
 
 
-并发编程：什么是多线程并发和并行？什么是线程安全问题？什么是共享变量的内存可见性问题？什么是Java中原子性操作？什么是Java中的CAS操作,AtomicLong实现原理？什么是Java指令重排序？Java中Synchronized关键字的内存语义是什么？Java中Volatile关键字的内存语义是什么？什么是伪共享,为何会出现，以及如何避免？什么是可重入锁、乐观锁、悲观锁、公平锁、非公平锁、独占锁、共享锁？讲讲ThreadLocal 的实现原理？ThreadLocal 作为变量的线程隔离方式，其内部是如何做的？说说InheritableThreadLocal 的实现原理？InheritableThreadLocal 是如何弥补 ThreadLocal 不支持继承的特性？CyclicBarrier内部的实现与 CountDownLatch 有何不同？随机数生成器 Random 类如何使用 CAS 算法保证多线程下新种子的唯一性？ThreadLocalRandom 是如何利用 ThreadLocal 的原理来解决 Random 的局限性？Spring 框架中如何使用 ThreadLocal 实现 request scope 作用域 Bean？并发包中锁的实现底层（对AQS的理解）？讲讲独占锁 ReentrantLock 原理？谈谈读写锁 ReentrantReadWriteLock 原理？StampedLock 锁原理的理解？谈下对基于链表的非阻塞无界队列 ConcurrentLinkedQueue 原理的理解？ConcurrentLinkedQueue 内部是如何使用 CAS 非阻塞算法来保证多线程下入队出队操作的线程安全？基于链表的阻塞队列 LinkedBlockingQueue 原理。阻塞队列LinkedBlockingQueue 内部是如何使用两个独占锁 ReentrantLock 以及对应的条件变量保证多线程先入队出队操作的线程安全？分析下JUC 中倒数计数器 CountDownLatch 的使用与原理？CountDownLatch 与线程的 Join 方法区别是什么？讲讲对JUC 中回环屏障 CyclicBarrier 的使用？CyclicBarrier内部的实现与 CountDownLatch 有何不同？Semaphore 的内部实现是怎样的？并发组件CopyOnWriteArrayList 是如何通过写时拷贝实现并发安全的 List？JVMJava 内存分配？Java 堆的结构是什么样子的？什么是堆中的永久代（Perm Gen space）?说说各个区域的作用？Java 中会存在内存泄漏吗，简述一下？Java 类加载过程？描述一下 JVM 加载 Class 文件的原理机制?什么是类加载器？类加载器有哪些？什么是tomcat类加载机制？类加载器双亲委派模型机制？什么是GC? 为什么要有 GC？简述一下Java 垃圾回收机制？如何判断一个对象是否存活？垃圾回收的优点和原理，并考虑 2 种回收机制？垃圾回收器的基本原理是什么？垃圾回收器可以马上回收内存吗？有什么办法主动通知虚拟机进行垃圾回收？深拷贝和浅拷贝？System.gc() 和 Runtime.gc() 会做些什么？什么是分布式垃圾回收（DGC）？它是如何工作的？串行（serial）收集器和吞吐量（throughput）收集器的区别是什么？在 Java 中，对象什么时候可以被垃圾回收？简述Minor GC 和 Major GC？Java 中垃圾收集的方法有哪些？讲讲你理解的性能评价及测试指标？常用的性能优化方式有哪些？说说分布式缓存和一致性哈希？同步与异步？阻塞与非阻塞？什么是GC调优？常见异步的手段有哪些？Spring为什么需要代理模式？讲讲静态代理模式的优点及其瓶颈？对Java 接口代理模式的实现原理的理解？如何使用 Java 反射实现动态代理？Java 接口代理模式的指定增强？谈谈对Cglib 类增强动态代理的实现？怎么理解面向切面编程的切面？讲解OOP与AOP的简单对比？讲解JDK 动态代理和 CGLIB 代理原理以及区别？讲解Spring 框架中基于 Schema 的 AOP 实现原理？讲解Spring 框架中如何基于 AOP 实现的事务管理？谈谈对控制反转的设计思想的理解？怎么理解 Spring IOC 容器？Spring IOC 怎么管理 Bean 之间的依赖关系，怎么避免循环依赖？对Spring IOC 容器的依赖注入的理解？说说对Spring IOC 的单例模式和高级特性？BeanFactory 和 FactoryBean 有什么区别？BeanFactory 和 ApplicationContext 又有什么不同？Spring 在 Bean 创建过程中是如何解决循环依赖的？谈谈Spring Bean 创建过程中的设计模式？数据库MySQL 有哪些存储引擎啊？都有什么区别？Float、Decimal 存储金额的区别？Datetime、Timestamp 存储时间的区别？Char、Varchar、Varbinary 存储字符的区别？对比一下B+树索引和 Hash索引？MySQL索引类型有？如何管理 MySQL索引？对Explain参数及重要参数的理解？索引利弊是什么及索引分类？聚簇索引和非聚簇索引的区别？B+tree 如何进行优化？索引遵循哪些原则？索引与锁有什么关系？还有什么其他的索引类型，各自索引有哪些优缺点？谈谈对Innodb事务的理解？说说数据库事务特点及潜在问题？什么是MySQL隔离级别？有多少种事务失效的场景，如何解决？一致性非锁定读和一致性锁定读是什么？Innodb如何解决幻读？讲讲Innodb行锁？死锁及监控是什么？自增长与锁 ，锁的算法，锁问题，锁升级是什么？乐观锁的线程如何做失败补偿？高并发场景（领红包）如何防止死锁，保证数据一致性？谈谈MySQL的锁并发？查询优化的基本思路是什么？说说MySQL读写分离、分库分表？表结构对性能有什么影响?浅谈索引优化？说说Sql优化的几点原则？MySQL表设计及规范？说说MySQL几种存储引擎应用场景？MySQL常用优化方式有哪些？MySQL常用监控？MySQL瓶颈分析？缓存redis数据结构有哪些？Redis缓存穿透，缓存雪崩？如何使用Redis来实现分布式锁？Redis的并发竞争问题如何解决？Redis持久化的几种方式，优缺点是什么，怎么实现的？Redis的缓存失效策略？Redis集群，高可用，原理？Redis缓存分片？Redis的数据淘汰策略？redis队列应用场景？分布式使用场景（储存session）？网络编程TCP建立连接和断开连接的过程？HTTP协议的交互流程，HTTP和HTTPS的差异，SSL的交互流程？TCP的滑动窗口协议有什么用？HTTP协议都有哪些方法？Socket交互的基本流程？讲讲tcp协议（建连过程，慢启动，滑动窗口，七层模型）？webservice协议（wsdl/soap格式，与restt办议的区别）？说说Netty线程模型，什么是零拷贝？TCP三次握手、四次挥手？DNS解析过程？TCP如何保证数据的可靠传输的？分布式什么是CAP定理？说说CAP理论和BASE理论？什么是最终一致性？最终一致性实现方式？什么是一致性Hash？讲讲分布式事务？如何实现分布式锁？如何实现分布式 Session?如何保证消息的一致性?负载均衡的理解？正向代理和反向代理？CDN实现原理？怎么提升系统的QPS和吞吐？Dubbo的底层实现原理和机制？描述一个服务从发布到被消费的详细过程？分布式系统怎么做服务治理？消息中间件如何解决消息丢失问题？Dubbo的服务请求失败怎么处理？对分布式事务的理解？如何实现负载均衡,有哪些算法可以实现?Zookeeper的用途,选举的原理是什么?讲讲数据的垂直拆分水平拆分？zookeeper原理和适用场景？zookeeper watch机制？redis/zk节点宕机如何处理？分布式集群下如何做到唯一序列号？用过哪些MQ,怎么用的,和其他mq比较有什么优缺点,MQ的连接是线程安全的吗？MQ系统的数据如何保证不丢失？列举出能想到的数据库分库分表策略？
+并发编程：
+什么是多线程并发和并行？
+什么是线程安全问题？
+什么是共享变量的内存可见性问题？
+什么是Java中原子性操作？
+什么是Java中的CAS操作,AtomicLong实现原理？
+什么是Java指令重排序？
+Java中Synchronized关键字的内存语义是什么？
+Java中Volatile关键字的内存语义是什么？
+什么是伪共享,为何会出现，以及如何避免？
+什么是可重入锁、乐观锁、悲观锁、公平锁、非公平锁、独占锁、共享锁？
+讲讲ThreadLocal 的实现原理？
+ThreadLocal 作为变量的线程隔离方式，其内部是如何做的？
+说说InheritableThreadLocal 的实现原理？
+InheritableThreadLocal 是如何弥补 ThreadLocal 不支持继承的特性？
+CyclicBarrier内部的实现与 CountDownLatch 有何不同？
+随机数生成器 Random 类如何使用 CAS 算法保证多线程下新种子的唯一性？
+ThreadLocalRandom 是如何利用 ThreadLocal 的原理来解决 Random 的局限性？
+Spring 框架中如何使用 ThreadLocal 实现 request scope 作用域 Bean？
+并发包中锁的实现底层（对AQS的理解）？
+讲讲独占锁 ReentrantLock 原理？
+谈谈读写锁 ReentrantReadWriteLock 原理？
+StampedLock 锁原理的理解？
+谈下对基于链表的非阻塞无界队列 ConcurrentLinkedQueue 原理的理解？
+ConcurrentLinkedQueue 内部是如何使用 CAS 非阻塞算法来保证多线程下入队出队操作的线程安全？
+基于链表的阻塞队列 LinkedBlockingQueue 原理。阻塞队列LinkedBlockingQueue 内部是如何使用两个独占锁 ReentrantLock 以及对应的条件变量保证多线程先入队出队操作的线程安全？
+分析下JUC 中倒数计数器 CountDownLatch 的使用与原理？
+CountDownLatch 与线程的 Join 方法区别是什么？
+讲讲对JUC 中回环屏障 CyclicBarrier 的使用？
+CyclicBarrier内部的实现与 CountDownLatch 有何不同？
+Semaphore 的内部实现是怎样的？
+并发组件CopyOnWriteArrayList 是如何通过写时拷贝实现并发安全的 List？
+JVMJava 内存分配？
+Java 堆的结构是什么样子的？
+什么是堆中的永久代（Perm Gen space）?说说各个区域的作用？
+Java 中会存在内存泄漏吗，简述一下？
+Java 类加载过程？
+描述一下 JVM 加载 Class 文件的原理机制?
+什么是类加载器？
+类加载器有哪些？
+什么是tomcat类加载机制？
+类加载器双亲委派模型机制？
+什么是GC? 为什么要有 GC？
+简述一下Java 垃圾回收机制？
+如何判断一个对象是否存活？
+垃圾回收的优点和原理，并考虑 2 种回收机制？
+垃圾回收器的基本原理是什么？
+垃圾回收器可以马上回收内存吗？
+有什么办法主动通知虚拟机进行垃圾回收？
+深拷贝和浅拷贝？
+System.gc() 和 Runtime.gc() 会做些什么？
+什么是分布式垃圾回收（DGC）？
+它是如何工作的？
+串行（serial）收集器和吞吐量（throughput）收集器的区别是什么？
+在 Java 中，对象什么时候可以被垃圾回收？
+简述Minor GC 和 Major GC？
+Java 中垃圾收集的方法有哪些？
+讲讲你理解的性能评价及测试指标？
+常用的性能优化方式有哪些？
+说说分布式缓存和一致性哈希？
+同步与异步？阻塞与非阻塞？
+什么是GC调优？
+常见异步的手段有哪些？
+Spring为什么需要代理模式？
+讲讲静态代理模式的优点及其瓶颈？
+对Java 接口代理模式的实现原理的理解？
+如何使用 Java 反射实现动态代理？
+Java 接口代理模式的指定增强？
+谈谈对Cglib 类增强动态代理的实现？
+怎么理解面向切面编程的切面？
+讲解OOP与AOP的简单对比？
+讲解JDK 动态代理和 CGLIB 代理原理以及区别？
+讲解Spring 框架中基于 Schema 的 AOP 实现原理？
+讲解Spring 框架中如何基于 AOP 实现的事务管理？
+谈谈对控制反转的设计思想的理解？
+怎么理解 Spring IOC 容器？
+Spring IOC 怎么管理 Bean 之间的依赖关系，怎么避免循环依赖？
+对Spring IOC 容器的依赖注入的理解？
+说说对Spring IOC 的单例模式和高级特性？
+BeanFactory 和 FactoryBean 有什么区别？
+BeanFactory 和 ApplicationContext 又有什么不同？
+Spring 在 Bean 创建过程中是如何解决循环依赖的？
+谈谈Spring Bean 创建过程中的设计模式？
+数据库MySQL 有哪些存储引擎啊？都有什么区别？
+Float、Decimal 存储金额的区别？
+Datetime、Timestamp 存储时间的区别？
+Char、Varchar、Varbinary 存储字符的区别？
+对比一下B+树索引和 Hash索引？
+MySQL索引类型有？
+如何管理 MySQL索引？
+对Explain参数及重要参数的理解？
+索引利弊是什么及索引分类？
+聚簇索引和非聚簇索引的区别？
+B+tree 如何进行优化？
+索引遵循哪些原则？
+索引与锁有什么关系？
+还有什么其他的索引类型，各自索引有哪些优缺点？
+谈谈对Innodb事务的理解？
+说说数据库事务特点及潜在问题？
+什么是MySQL隔离级别？
+有多少种事务失效的场景，如何解决？
+一致性非锁定读和一致性锁定读是什么？
+Innodb如何解决幻读？
+讲讲Innodb行锁？
+死锁及监控是什么？
+自增长与锁 ，锁的算法，锁问题，锁升级是什么？
+乐观锁的线程如何做失败补偿？
+高并发场景（领红包）如何防止死锁，保证数据一致性？
+谈谈MySQL的锁并发？
+查询优化的基本思路是什么？
+说说MySQL读写分离、分库分表？
+表结构对性能有什么影响?浅谈索引优化？
+说说Sql优化的几点原则？
+MySQL表设计及规范？
+说说MySQL几种存储引擎应用场景？
+MySQL常用优化方式有哪些？
+MySQL常用监控？
+MySQL瓶颈分析？
+缓存redis数据结构有哪些？
+Redis缓存穿透，缓存雪崩？
+如何使用Redis来实现分布式锁？
+Redis的并发竞争问题如何解决？
+Redis持久化的几种方式，优缺点是什么，怎么实现的？
+Redis的缓存失效策略？
+Redis集群，高可用，原理？
+Redis缓存分片？
+Redis的数据淘汰策略？
+redis队列应用场景？
+分布式使用场景（储存session）？
+网络编程TCP建立连接和断开连接的过程？
+HTTP协议的交互流程，HTTP和HTTPS的差异，SSL的交互流程？
+TCP的滑动窗口协议有什么用？
+HTTP协议都有哪些方法？
+Socket交互的基本流程？
+讲讲tcp协议（建连过程，慢启动，滑动窗口，七层模型）？
+webservice协议（wsdl/soap格式，与restt办议的区别）？
+说说Netty线程模型，什么是零拷贝？
+TCP三次握手、四次挥手？
+DNS解析过程？
+TCP如何保证数据的可靠传输的？
+分布式什么是CAP定理？
+说说CAP理论和BASE理论？
+什么是最终一致性？
+最终一致性实现方式？
+什么是一致性Hash？
+讲讲分布式事务？
+如何实现分布式锁？
+如何实现分布式 Session?
+如何保证消息的一致性?
+负载均衡的理解？
+正向代理和反向代理？
+CDN实现原理？
+怎么提升系统的QPS和吞吐？
+Dubbo的底层实现原理和机制？
+描述一个服务从发布到被消费的详细过程？
+分布式系统怎么做服务治理？
+消息中间件如何解决消息丢失问题？
+Dubbo的服务请求失败怎么处理？
+对分布式事务的理解？
+如何实现负载均衡,有哪些算法可以实现?
+Zookeeper的用途,选举的原理是什么?
+讲讲数据的垂直拆分水平拆分？
+zookeeper原理和适用场景？
+zookeeper watch机制？
+redis/zk节点宕机如何处理？
+分布式集群下如何做到唯一序列号？
+用过哪些MQ,怎么用的,和其他mq比较有什么优缺点,MQ的连接是线程安全的吗？
+MQ系统的数据如何保证不丢失？列举出能想到的数据库分库分表策略？
 
-数据结构与算法，JVM内存结构、垃圾回收器、回收算法、GC、并发编程相关(多线程、线程池等)、NIO/BIO、性能优化、设计模式、Spring框架：分布式相关：Redis缓存、一致Hash算法、分布式存储、负载均衡等，微服务以及Docker容器等。在这由于文字很多，我总结了java面试所涉及到的常问范围及常问面试题免费分享给大家，文末有领取！
 
-部分面试常问的面试专题
 一、JVM与性能优化
 
 描述一下 JVM 加载 Class 文件的原理机制?
