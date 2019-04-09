@@ -1,3 +1,5 @@
+# 多线程
+
 进程
 操作系统调度的最小单位
 
@@ -15,7 +17,7 @@
 线程生命周期
 创建-就绪-运行-阻塞-死亡
 
-# Thread常用方法
+## Thread常用方法
 
 **原子操作**
 i++是原子的并不对
@@ -35,10 +37,11 @@ Thread.currentThread()
 
 Thread.interrupt()
 终止当前线程
+
 - 抛出异常终止线程
 - return终止
 
-```
+```word
 Thread类中，run和start的区别？
 
 start方法就是调用的线程是并行的，会启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。
@@ -46,8 +49,10 @@ start方法就是调用的线程是并行的，会启动一个新线程，新线
 run方法则实际上是串行的，失去多线程的特性。从源码角度看，run方法在Thread类中就是直接调用run方法。一个普通的成员方法。
 可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！
 ```
+
 run方法源码如下
-```
+
+```java
 @Override
 public void run() {
     if (target != null) {
@@ -55,8 +60,10 @@ public void run() {
     }
 }
 ```
+
 start方法源码如下
-```
+
+```java
 public synchronized void start() {
     /**
      * This method is not invoked for the main method thread or "system"
@@ -90,34 +97,35 @@ public synchronized void start() {
 }
 ```
 
-```
+```word
 IO流本身是阻塞的，他就是一个BIO
 
 比如说用多线程、或者说线程池来监听端口，然后给每个连接分配一个线程，实现相应的业务代码，这还是属于BIO范畴
 
 ```
 
-```
+```word
 线程何时会执行？
 
 线程抢到CPU的执行权
 ```
 
-# NIO
+## NIO
+
 同步非阻塞的IO
 
-## Channel
+### Channel
 
+### Selector
 
-## Selector
-
-```
+```word
 用BIO实现伪NIO
 
 
 ```
 
-# Netty
+## Netty
 
 有各种线程池
 
+<https://zhuanlan.zhihu.com/p/56542551>
