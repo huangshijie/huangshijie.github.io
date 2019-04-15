@@ -82,8 +82,6 @@ public final native boolean compareAndSwapObject(Object o, long offset,
                                                      Object x);
 ```
 
-compareAndSwapObject方法是一个原子操作，当前
-
 #### Unsafe类
 
 Unsafe类，提供给开发者操作内存空间的能力。

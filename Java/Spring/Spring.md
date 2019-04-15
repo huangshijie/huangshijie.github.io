@@ -4,11 +4,69 @@
 
 @Profile
 
+### @Autowired
+
+#### 构造器注入
+
+```java
 @Autowired
+private User user;
+private String school;
+
+
+public UserAccountServiceImpl(){
+  this.school = user.getSchool();
+}
+```
+
+Java类会先执行构造方法，然后再给注解了@Autowired 的user注入值，所以在执行构造方法的时候，就会报错。
+
+Java类的初始化的顺序: 静态变量或静态语句块–>实例变量或初始化语句块–>构造方法–>@Autowired
+
+所以推荐使用构造器注入
+
+```java
+private User user;
+private String school;
+
+@Autowired
+public UserAccountServiceImpl(User user) {
+  this.school = user.getSchool();
+}
+```
+
+如果bean作为一个单例模式来使用，默认为单例，建议在bean的声明上加final，如
+
+```java
+private final EnterpriseDbService service;
+
+@Autowired
+public EnterpriseDbController(EnterpriseDbService service) {
+  this.service = service;
+}
+```
+
+@Scope
 
 @Component
 
+@Configuration
+
+### @Bean
+
+@Bean是一个方法级别上的注解，主要用在@Configuration注解的类里，也可以用在@Component注解的类里。
+
 @Repository org.springframework.stereotype.Repository
+
+@Retention
+
+@Target
+
+@PersistenceContext
+
+@PostConstruct
+
+@PreDestroy
 
 ### @Transactional
 
