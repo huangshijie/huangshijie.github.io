@@ -4,6 +4,10 @@
 
 @Profile
 
+### @Qualifier
+
+---
+
 ### @Autowired
 
 #### 构造器注入
@@ -46,11 +50,15 @@ public EnterpriseDbController(EnterpriseDbService service) {
 }
 ```
 
+---
+
 @Scope
 
 @Component
 
 @Configuration
+
+---
 
 ### @Bean
 
@@ -67,6 +75,8 @@ public EnterpriseDbController(EnterpriseDbService service) {
 @PostConstruct
 
 @PreDestroy
+
+---
 
 ### @Transactional
 
