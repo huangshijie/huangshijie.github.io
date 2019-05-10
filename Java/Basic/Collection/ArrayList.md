@@ -1,5 +1,7 @@
+# ArrayList
 
-## Introduction 
+## Introduction
+
 - Java 9 增加了List.of(), Set.of(), Map.of()
 - Colloctors 增加新方法filtering, flatMapping
 - 实现了List接口，实现了所有list操作，允许各种元素，包括null，除了不同步，其他大致和Vector差不多
@@ -10,17 +12,17 @@
 - ArrayList的capacity比arraylist的实际长度长，并且在add new element的时候，capacity会自动增长
 - **不同步**
 - iterator，快速失败机制
-- 
-```
+
+```word
 ArrayList，内部有个申明为final的静态变量EMPTY_ELEMENTDATA和DEFAULTCAPACITY_EMPTY_ELEMENTDATA，是所有的arraylist共享的，声明final，可以防止被修改。
 ```
 
-```
-Resizable-array implementation of the <tt>List</tt> interface. Implements all optional list operations, and permits all elements, including <tt>null</tt>. In addition to implementing the <tt>List</tt> interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to <tt>Vector</tt>, except that it is unsynchronized.) 
+```word
+Resizable-array implementation of the <tt>List</tt> interface. Implements all optional list operations, and permits all elements, including <tt>null</tt>. In addition to implementing the <tt>List</tt> interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to <tt>Vector</tt>, except that it is unsynchronized.)
 
- <p>The <tt>size</tt>, <tt>isEmpty</tt>, <tt>get</tt>, <tt>set</tt>, <tt>iterator</tt>, and <tt>listIterator</tt> operations run in constant time. The <tt>add</tt> operation runs in <i>amortized constant time</i>, that is, adding n elements requires O(n) time. All of the other operations run in linear time (roughly speaking). The constant factor is low compared to that for the <tt>LinkedList</tt> implementation. 
+ <p>The <tt>size</tt>, <tt>isEmpty</tt>, <tt>get</tt>, <tt>set</tt>, <tt>iterator</tt>, and <tt>listIterator</tt> operations run in constant time. The <tt>add</tt> operation runs in <i>amortized constant time</i>, that is, adding n elements requires O(n) time. All of the other operations run in linear time (roughly speaking). The constant factor is low compared to that for the <tt>LinkedList</tt> implementation.
 
- <p>Each <tt>ArrayList</tt> instance has a <i>capacity</i>. The capacity is the size of the array used to store the elements in the list. It is always at least as large as the list size. As elements are added to an ArrayList, its capacity grows automatically. The details of the growth policy are not specified beyond the fact that adding an element has constant amortized time cost. 
+ <p>Each <tt>ArrayList</tt> instance has a <i>capacity</i>. The capacity is the size of the array used to store the elements in the list. It is always at least as large as the list size. As elements are added to an ArrayList, its capacity grows automatically. The details of the growth policy are not specified beyond the fact that adding an element has constant amortized time cost.
 
  <p>An application can increase the capacity of an <tt>ArrayList</tt> instance before adding a large number of elements using the <tt>ensureCapacity</tt> operation. This may reduce the amount of incremental reallocation. 
 
