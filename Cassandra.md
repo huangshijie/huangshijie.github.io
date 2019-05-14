@@ -1,0 +1,5 @@
+# Cassandra
+
+cqlsh
+
+Debian
