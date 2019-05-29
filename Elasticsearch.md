@@ -51,6 +51,9 @@ shard = hash(routing) % number_of_primary_shards
 
 ### 倒排索引
 
+[Elasticsearch－基础介绍及索引原理分析](https://www.cnblogs.com/dreamroute/p/8484457.html)
+[时间序列数据库的秘密 (2)——索引](https://www.infoq.cn/article/database-timestamp-02?utm_source=infoq&utm_medium=related_content_link&utm_campaign=relatedContent_articles_clk)
+
 ### mapping
 
 ### 分析

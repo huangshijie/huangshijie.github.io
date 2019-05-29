@@ -13,10 +13,12 @@ Private 是否安全？反射照样可以访问private的
 final
  final、finally与finalize的区别 1
 ```
+
 ```
 transient
  接着问，序列化，反序列化，
 ```
+
 ---
 **Given a sorted linked list, delete all duplicates such that each element appear only once.**
 接下去问集合相关内容
@@ -35,6 +37,7 @@ transient
 >   elementData = Arrays.copyOf(elementData, newCapacity);
 > }
 > ```
+> 
 >  - \>> 和\>>> 的区别
 > HashSet与HashMap怎么判断集合元素重复？ -> hashcode 和 equals
 > 浅拷贝和深拷贝
@@ -67,3 +70,5 @@ kafka 提供了两套 consumer API：
 
 1. The high-level Consumer API
 2. The SimpleConsumer API
+
+Linux管道命令
