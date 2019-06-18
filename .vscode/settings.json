@@ -5,5 +5,8 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "markdown.styles": ["C:\\Users\\i325805\\Note\\resume.css"]
+  "markdown.styles": [
+    "C:\\Users\\i325805\\Note\\resume.css"
+  ],
+  "cSpell.allowCompoundWords": true
 }

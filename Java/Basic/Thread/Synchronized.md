@@ -97,4 +97,6 @@ public class org.huang.Util.App {
 }
 ```
 
-可以看到反编译的字节码中包含有'**monitorenter**'和'**monitorexit**'
+可以看到反编译的字节码中包含有'**monitorenter**'和'**monitorexit**'，每个对象都有一个监视器锁(monitor)。当monitor被占用，则处于锁定状态，线程执行monitorenter指令尝试获取monitor的所有权：
+
+1. 如果monitor的进入数为0，则
