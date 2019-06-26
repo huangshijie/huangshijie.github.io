@@ -37,7 +37,7 @@
 ## <img src="assets/project-diagram-solid.svg" width="30px"> Project Experience
 
 - **SAP LBN Connectivity (2019.03 - present)**
-  It is a PaaS project provides various mircoservices for upper applications. As its name said these mircoservices are used for building connections between LBN cloud apps and different systems including on-premise SAP ERP Systems and non-SAP Systems. 
+  It is a PaaS project provides various mircoservices for upper applications. As its name said these mircoservices are used for building connections between LBN cloud apps and different systems including on-premise SAP ERP Systems and non-SAP Systems.
   For now I'm responsible for fetching audit logs, analyzing them according to different scenarios, then recording relevant info and notify ops team at the same time.
 
 - **SAP Connected Worker Safety (2017.07 - 2019.02)**

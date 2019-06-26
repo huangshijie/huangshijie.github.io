@@ -31,7 +31,6 @@ Java虚拟机可以操作的数据类型可以分为两类：**原始类型**(Pr
 
 集合不仅包含可数的非零值，而且包括了5个特殊的数值：正数零、负数零、正无穷大、负无穷大和NaN(Not a Number, 计算中出现的错误情况,NaN与任何值都不相等包括自身)
 
-
 ### Boolean类型
 
 true和false，默认为false
@@ -46,13 +45,13 @@ true和false，默认为false
 
 类类型，数组类型和接口类型
 
-#### 强引用
+### 强引用
 
-#### 软引用
+### 软引用
 
-#### 弱引用
+### 弱引用
 
-#### 虚引用
+### 虚引用
 
 ## 运行时数据区
 
@@ -84,7 +83,6 @@ Java虚拟机栈使用的内存不需要保证是连续的。
 栈帧随方法的调用而创建，随方法结束而销毁。(无论方法正常完成还是异常完成，都算方法结束)
 
 每个栈帧都有自己的本地变量表、操作数栈和指向当前方法所属的类的运行时常量池的引用。
-
 **栈帧是线程本地私有的，不可能在一个栈帧之中引用另一个线程的栈帧**
 
 - 局部变量表
@@ -92,7 +90,6 @@ Java虚拟机栈使用的内存不需要保证是连续的。
 - 操作数栈
 
 - 动态链接
-
 
 ### 堆
 
@@ -102,9 +99,10 @@ Java虚拟机栈使用的内存不需要保证是连续的。
 
 JDK8取消了永久代(Permgen)，而是将原有数据迁移至Java Heap或是[Metaspace](https://blogs.oracle.com/poonam/about-g1-garbage-collector,-permanent-generation-and-metaspace)
 
-```
+```word
 In JDK 8, classes metadata is now stored in the native heap and this space is called Metaspace. 
 ```
+
 所以Metaspace应该和堆分开看，Metaspace用的是内存中的本地堆。
 
 ### 方法区
@@ -118,12 +116,9 @@ In JDK 8, classes metadata is now stored in the native heap and this space is ca
 是class文件中每个类或者接口的常量池表的运行时表示形式，包含了若干种不同的常量，从编译期可知的数值字面量到必须在运行期解析后才能获得的方法或字段引用。
 在加载类和接口到虚拟机后，就创建对应的运行时常量池。为每个类型都维护一个常量池。
 
-
-
 ### 本地方法栈
 
 支持native方法的执行的栈就是本地方法栈。如果JVM支持本地方法栈，那么这个栈就在线程创建的时候按线程分配。
-
 
 ### String Pool 字符串池
 
@@ -146,13 +141,9 @@ It follows that for any two strings s and t, s.intern() == t.intern() is true if
 
 All literal strings and string-valued constant expressions are interned. String literals are defined in section 3.10.5 of the The Java™ Language Specification.
 
-
-
-
 ---
 
 https://www.zhihu.com/question/31203609/answer/576030121
-
 
 值传递还是引用传递
 实参将访问对象的地址传递给了形参，然后看形参有没有重新new一个对象，重新指向了一个新的地址空间。
@@ -161,4 +152,30 @@ https://www.zhihu.com/question/31203609/answer/576030121
 
 传递过去之后
 
-## dump
+## JVM性能检测
+
+### JMAP
+
+dump
+
+### JHEAP
+
+### JSTAT
+
+### JSTACK
+
+### JHAT
+
+### Java VisualVM
+
+#### Threads visualization
+
+[VisualVM - Thread States](!https://stackoverflow.com/questions/27406200/visualvm-thread-states)
+
+[What is Thread.State in Java? What's it used for?](!http://geekexplains.blogspot.com/2008/07/threadstate-in-java-blocked-vs-waiting.html)
+
+- Running
+- Sleeping
+- Wait
+- Park
+- Monitor
