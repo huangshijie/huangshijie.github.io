@@ -33,9 +33,10 @@
 
 ## <img src="assets/project-diagram-solid.svg" width="30px"> 项目经历
 
-- **SAP LBN Connectivity (2019.03 - 至今)**
+- **SAP LBN Connectivity For Partner Onboarding (2019.03 - 至今)**
 
-  这个项目主要是向SAP Cloud Foundry中的上层应用提供各类Mircoservices。正如其名称所述，这些Mircoservices用于建立LBN Cloud Apps与不同系统（包括内部部署SAP ERP系统和非SAP系统）之间的连接。我在其中主要负责后端开发，同时负责将不同组件中的通用方法抽取到公有库中，同时研究并且实现了使用RabbitMQ作为组件之间的通信队列。
+  这个项目
+  这个项目主要是向SAP Cloud Foundry中的上层应用提供各类Mircoservices。正如其名称所述，这些Mircoservices用于建立LBN Cloud Apps与不同系统（包括内部部署SAP ERP系统和非SAP系统）之间的连接。我在其中主要负责后端开发，负责将不同组件中的通用方法抽取到公有库中，同时研究并且实现了组件之间通信共用库，底层主要是依靠RabbitMQ。
 
 - **SAP Connected Worker Safety (CWS)项目 (2017年7月 ~ 至今)**
 
@@ -49,7 +50,8 @@
 ## <img src="assets/tools-solid.svg" width="30px"> 自我评价
 
 - 主要使用的开发语言是JAVA，了解Javascript和Python
-- 熟悉的后端开发框架有Spring boot, Spring Cloud, Mybatis，了解前端框架有SAPUI5和Vue
+- 熟悉的后端开发框架有Spring boot, Spring Cloud, Mybatis, Olingo，EclipseLink-JPA，了解前端框架有SAPUI5和Vue
+- 熟悉的数据库有Mysql，Hana，Redis
 - 熟悉版本管理工具SVN，Maven和Git，了解自动化部署工具Jenkins
 - 熟悉软件开发的流程和规范；
 - 良好的英语听说读写能力；
