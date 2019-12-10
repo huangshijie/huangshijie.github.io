@@ -60,6 +60,6 @@ Garbage Collection
   - 标记-整理算法
 - Concurrent Mark Sweep Collector (CMS)
   - 标记-清除算法
-- Garbage-First Garbage Collector 
+- Garbage-First Garbage Collector
   - reference link:
   [The Garbage-First Garbage Collector](https://www.oracle.com/technetwork/java/javase/tech/g1-intro-jsp-135488.html)

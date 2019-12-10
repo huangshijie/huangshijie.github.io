@@ -29,13 +29,13 @@
 
 - **思爱普(中国)有限公司( 2016年6月 ~ 至今)**
 
-   当前我所在的部门是Logistical Business Network，主要是负责SAP在供应链中，结合IoT设备对ERP中的Inbound和OutBound订单进行追踪与追溯。在进入SAP第一年，我主要参与PoC以及与其他公司的联合创新项目的开发，开发的项目参加过的大型展会有，16年与17年的工博会以及17年的SAP Select。之后17年、18年工作重心转移到正式产品的开发，在项目中使用的开发语言是Java，主要负责后端开发以及担任Scrum master的角色，参与产品在Cloud上集成部署，参与项目后端代码的review。同时，参与过公司内部的Scrum培训，并在日常开发中成功实施了这一敏捷开发策略。
+   当前我所在的部门是Logistical Business Network，主要是负责SAP在供应链中，对ERP中的Inbound和OutBound订单进行追踪与追溯。在进入SAP第一年，我主要参与PoC以及与其他公司的联合创新项目的开发，开发的项目参加过的大型展会有，16年与17年的工博会以及17年的SAP Select。之后工作重心开始转移到正式产品的开发，在项目中使用的开发语言是Java，主要负责后端开发以及担任Scrum master的角色，参与产品在Cloud上集成部署，项目后端代码的review。同时，参与过公司内部的Scrum培训，并在日常开发中成功实施了这一敏捷开发策略。
 
 ## <img src="assets/project-diagram-solid.svg" width="30px"> 项目经历
 
-- **SAP LBN Connectivity (2019.03 - 至今)**
+- **SAP LBN Connectivity For Partner Onboarding (2019.03 - 至今)**
 
-  这个项目主要是向SAP Cloud Foundry中的上层应用提供各类Mircoservices。正如其名称所述，这些Mircoservices用于建立LBN Cloud Apps与不同系统（包括内部部署SAP ERP系统和非SAP系统）之间的连接。我在其中主要负责后端开发，同时负责将不同组件中的通用方法抽取到公有库中，同时研究并且实现了使用RabbitMQ作为组件之间的通信队列。
+  这个项目主要是负责帮助客户与自己的供应商进行系统对接，维护在系统对接过程中所用到的接口信息、认证参数等。这个项目采用的是MicroService架构模式，是大的MicroService中的一个组件，为其他MicroService组建提供数据。技术框架选择的是Spring boot，消息队列使用的是RabbitMQ，最终部署在SAP Cloud Foundry上。
 
 - **SAP Connected Worker Safety (CWS)项目 (2017年7月 ~ 至今)**
 
@@ -49,7 +49,8 @@
 ## <img src="assets/tools-solid.svg" width="30px"> 自我评价
 
 - 主要使用的开发语言是JAVA，了解Javascript和Python
-- 熟悉的后端开发框架有Spring boot, Spring Cloud, Mybatis，了解前端框架有SAPUI5和Vue
+- 熟悉的后端开发框架有Spring boot, Spring Cloud, Mybatis, Olingo，EclipseLink-JPA，了解前端框架有SAPUI5和Vue
+- 熟悉的数据库有Mysql，Hana，Redis
 - 熟悉版本管理工具SVN，Maven和Git，了解自动化部署工具Jenkins
 - 熟悉软件开发的流程和规范；
 - 良好的英语听说读写能力；
