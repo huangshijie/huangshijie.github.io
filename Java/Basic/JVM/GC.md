@@ -1,13 +1,16 @@
 # GC
 
 ## WHAT
+
 Garbage Collection
+
 - 收集算法是内存回收的方法论，理论依据。
 - 垃圾收集器是内存回收的具体实现，依据不同的算法实现不同的垃圾回收器，例如商用的G1收集器。
   
   ![Garbage Collection in HotSpot VM](https://github.com/huangshijie/ImgRep/blob/master/Garbage%20Collection%20in%20HotSpot.jpg)
 
 ### 基本配置参数
+
 - -Xmx 设置最大堆
 - -XX:SurvivorRatio
 - -XX:PretenureSizeThreshold
@@ -19,13 +22,16 @@ Garbage Collection
 - -XX:GCTimeRatio
 
 ### 收集算法
+
 - 标记-清除算法
 - 复制算法
 - 标记-整理算法
 - 分代收集算法
 
 ### 垃圾收集器
+
 **HotSpot虚拟机**实现了七个收集器，分别用于不同的场合
+
 - Serial Collector
   - 复制算法
   - Single thread，简单高效
@@ -54,6 +60,6 @@ Garbage Collection
   - 标记-整理算法
 - Concurrent Mark Sweep Collector (CMS)
   - 标记-清除算法
-- Garbage-First Garbage Collector 
+- Garbage-First Garbage Collector
   - reference link:
   [The Garbage-First Garbage Collector](https://www.oracle.com/technetwork/java/javase/tech/g1-intro-jsp-135488.html)
