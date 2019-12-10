@@ -80,6 +80,12 @@ bootstrap加载器
 ```
 
 - 线程池，线程池有几种,干什么用。
+
+```word
+SingleThreadPool
+
+```
+
 - JAVA多线程实现
 - JAVA线程和进程区别
 - 线程有几种状态，怎么互相转化
