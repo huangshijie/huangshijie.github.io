@@ -39,7 +39,7 @@
 
 - **SAP Connected Worker Safety (CWS)项目 (2017年7月 ~ 至今)**
 
-  该项目是在SAP Cloud Foundry上的一个Multi-tenant App。该项目主要目标是结合IoT设备对工人自身以及其工作环境安全的检测。
+  该项目是在SAP Cloud Foundry上的一个Cloud Native App。该项目主要目标是结合IoT设备对工人自身以及其工作环境安全的检测。
   在这个项目中，我主要负责后端开发，结合ANTLR类库实现了自动构造自定义语言的识别模块。为用户提供了一种更灵活的方式来定义Geofence信息。
 
 - **SAP Global Track and Trace (GTT)项目 (2016年6月 ~ 2017年11月)**

@@ -2,7 +2,11 @@
 
 ## Overview
 
-synchronized，Java关键字，同步锁，可以用于修饰实例方法、静态方法、代码块。
+synchronized，Java关键字，同步锁，可以用于修饰实例方法、静态方法、代码块。主要作用有三个：
+
+1. 确保线程互斥的访问同步代码
+2. 保证共享变量的修改能够及时可见
+3. 有效解决重排序问题
 
 ### Synchronized怎么用
 
@@ -99,4 +103,5 @@ public class org.huang.Util.App {
 
 可以看到反编译的字节码中包含有'**monitorenter**'和'**monitorexit**'，每个对象都有一个监视器锁(monitor)。当monitor被占用，则处于锁定状态，线程执行monitorenter指令尝试获取monitor的所有权：
 
-1. 如果monitor的进入数为0，则
+1. 如果monitor的进入数为0，则该线程进入monitor，然后进入数设置为1，该线程即为monitor的所有者；
+2. 如果线程

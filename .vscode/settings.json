@@ -8,5 +8,6 @@
   "markdown.styles": [
     "C:\\Users\\i325805\\Note\\resume.css"
   ],
-  "cSpell.allowCompoundWords": true
+  "cSpell.allowCompoundWords": false,
+  "cSpell.enabled": false
 }
