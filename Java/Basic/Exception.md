@@ -91,3 +91,11 @@ Exception则主要针对程序运行过程中遇到的异常的情况。
 5) 在Java中，一定要在数据库连接，数据库查询，流处理后，在finally块中调用close()方法。
 
 ```
+
+1. 什么情况下，需要包装异常？
+2. 什么情况下，抛出runtime exception，什么情况下抛需要被catch的异常？
+[When to choose checked and unchecked exceptions](https://stackoverflow.com/questions/27578/when-to-choose-checked-and-unchecked-exceptions)
+[In Java, when should I create a checked exception, and when should it be a runtime exception? [duplicate]](https://stackoverflow.com/questions/499437/in-java-when-should-i-create-a-checked-exception-and-when-should-it-be-a-runti)
+[Proper use of RuntimeException? [duplicate]](https://stackoverflow.com/questions/4233793/proper-use-of-runtimeexception)
+3. 什么情况下，需要handle exception，什么情况，又需要向上抛出
+[When to catch the Exception vs When to throw the Exceptions?](https://stackoverflow.com/questions/18679090/when-to-catch-the-exception-vs-when-to-throw-the-exceptions#comment27513178_18679131)
