@@ -1,0 +1,4 @@
+# Default ignored files
+/workspace.xml
+./LeetCode/target
+./LeetCode/.idea
