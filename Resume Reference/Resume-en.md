@@ -37,7 +37,11 @@
 
 ## <img src="assets/project-diagram-solid.svg" width="30px"> Project Experience
 
-- **SAP LBN Connectivity (2019.03 - present)**
+- **SAP LBN Manage Models (2020.03 - present)**
+  It is a SaaS product provides various microservices for upper applications. As its name said this product is used for building connections between LBN cloud apps and different systems including on-premise SAP ERP Systems and non-SAP Systems.
+  For now I'm responsible for the back-end development of a microservice project. This project is used to maintain connect info, credential info and provide strand API for UI display and other microservices.
+
+- **SAP LBN Connectivity (2019.03 - 2020.03)**
   It is a SaaS product provides various microservices for upper applications. As its name said this product is used for building connections between LBN cloud apps and different systems including on-premise SAP ERP Systems and non-SAP Systems.
   For now I'm responsible for the back-end development of a microservice project. This project is used to maintain connect info, credential info and provide strand API for UI display and other microservices.
 

@@ -27,6 +27,8 @@ Java中导致饥饿的原因： 高优先级线程吞噬所有的低优先级线
 
 6、什么是线程组，为什么在Java中不推荐使用？
 
+ThreadGroup
+
 7、为什么使用Executor框架？
 
 8、在Java中Executor和Executors的区别？
