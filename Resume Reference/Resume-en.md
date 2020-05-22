@@ -39,7 +39,7 @@
 
 - **SAP LBN Manage Models (2020.03 - present)**
   It is a SaaS product provides various microservices for upper applications. As its name said this product is used for building connections between LBN cloud apps and different systems including on-premise SAP ERP Systems and non-SAP Systems.
-  For now I'm responsible for the back-end development of a microservice project. This project is used to maintain connect info, credential info and provide strand API for UI display and other microservices.
+  In this project, I'm responsible for front-end development. And I'm mainly focus on how to 
 
 - **SAP LBN Connectivity (2019.03 - 2020.03)**
   It is a SaaS product provides various microservices for upper applications. As its name said this product is used for building connections between LBN cloud apps and different systems including on-premise SAP ERP Systems and non-SAP Systems.
