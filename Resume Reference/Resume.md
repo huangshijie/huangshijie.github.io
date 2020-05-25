@@ -16,7 +16,7 @@
  ## <img src="assets/info-circle-solid.svg" width="30px"> 个人信息 
  
  - 求职意向：Java 研发工程师
- - 工作经验：3 年
+ - 工作经验：4 年
 
 ## <img src="assets/graduation-cap-solid.svg" width="30px"> 教育经历
 
@@ -33,11 +33,15 @@
 
 ## <img src="assets/project-diagram-solid.svg" width="30px"> 项目经历
 
-- **SAP LBN Connectivity For Partner Onboarding (2019.03 - 至今)**
+- **SAP LBN Connectivity For Partner Onboarding (2020.03 - 至今)**
 
-  这个项目主要是负责帮助客户与自己的供应商进行系统对接，维护在系统对接过程中所用到的接口信息、认证参数等。这个项目采用的是MicroService架构模式，是大的MicroService中的一个组件，为其他MicroService组建提供数据。技术框架选择的是Spring boot，消息队列使用的是RabbitMQ，最终部署在SAP Cloud Foundry上。
+  该项目主要是提供灵活的建模方式，帮助客户根据自己的业务逻辑创建数据模型，用于之后的各类订单的追踪追溯。我在该项目中，主要的角色是前端开发，根据前端Architect以及UI5的guideline，对当前的代码进行重构，帮助其他同事提高开发效率。
 
-- **SAP Connected Worker Safety (CWS)项目 (2017年7月 ~ 至今)**
+- **SAP LBN Connectivity For Partner Onboarding (2019.03 - 2020.03)**
+
+  该项目主要是负责帮助客户与自己的供应商进行系统对接，维护在系统对接过程中所用到的接口信息、认证参数等。这个项目采用的是MicroService架构模式，是大的MicroService中的一个组件，为其他MicroService组建提供数据。技术框架选择的是Spring boot，消息队列使用的是RabbitMQ，最终部署在SAP Cloud Foundry上。我在该项目中主要负责后端开发，协助后端Architect编写开发设计文档，以及最终代码实现。
+
+- **SAP Connected Worker Safety (CWS)项目 (2017年7月 ~ 2019年2月)**
 
   该项目是在SAP Cloud Foundry上的一个Cloud Native App。该项目主要目标是结合IoT设备对工人自身以及其工作环境安全的检测。
   在这个项目中，我主要负责后端开发，结合ANTLR类库实现了自动构造自定义语言的识别模块。为用户提供了一种更灵活的方式来定义Geofence信息。
