@@ -80,6 +80,8 @@ public class LeetCode350 {
 
         HashMap<Integer, Integer> record = new HashMap<>();
 
+        return null;
+
     }
 
     public static void main(String[] args) {

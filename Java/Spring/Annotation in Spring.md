@@ -1,4 +1,17 @@
-# Spring
+# Annotation in Spring
+
+## 0 注解
+
+### 0.1 概念
+
+Java 注解是在 JDK5 时引入的新特性，注解（也被称为元数据）为我们在代码中添加信息提供了一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。注解类型定义指定了一种新的类型，一种特殊的接口类型。 在关键词 interface 前加 @ 符号也就是用 @interface 来区分注解的定义和普通的接口声明。目前大部分框架(如 Spring Boot 等)都通过使用注解简化了代码并提高的编码效率。
+
+### 0.2 作用
+提供信息给编译器： 编译器可以利用注解来探测错误和警告信息，如 @Override、@Deprecated。
+
+编译阶段时的处理： 软件工具可以用来利用注解信息来生成代码、Html 文档或者做其它相应处理，如 @Param、@Return、@See、@Author 用于生成 Javadoc 文档。
+
+运行时的处理： 某些注解可以在程序运行的时候接受代码的提取，值得注意的是，注解不是代码本身的一部分。如Spring 2.5 开始注解配置，减少了配置。
 
 ## 1 Java 标准注解
 三种标准注解和四种元注解。
@@ -152,17 +165,36 @@ public @interface EnableAutoConfiguration {
 }
 
 ```
+
 ### @Import
 
 ### 3.2 @Profile
 
 ### 3.3 @ConditionalOnProperty
 
+### @Resource
+
 ### 3.4 @Qualifier
 
 ### 3.5 @Autowired
+@Autowired注入的是接口, 如果Spring配置了component scan，并且要注入的接口只有一个实现的话，那么spring框架可以自动将interface于实现组装起来。如果没有配置component scan，那么你必须在application-config.xml（或等同的配置文件）定义这个bean。
 
-#### 1.4.1 构造器注入
+@Autowired先按类型找，然后再按id为属性名去找
+他会帮你按UserService的类型去容器中找唯一bean对象
+
+容器没有该类型的对象：报错
+容器中有该类型的唯一bean对象，就将该唯一bean对象赋值给该属性
+容器中有多个【两个及以上】该类型的唯一bean对象，
+它会再根据该属性名去容器中找，
+看看容器中的哪个bean对象的id值和该属性名一致，
+如果有，就将容器中该对象赋值给该属性，如果没有报错。
+然后通过多态的向上转型就赋值成功。等价于之前手动赋值
+
+UserService userService = new UserServiceImpl();
+
+https://www.hawu.me/coding/770
+
+#### 3.5.1 构造器注入
 
 ```java
 @Autowired
@@ -228,6 +260,9 @@ Spring 配置类
 
 - 默认设置，是只会回滚运行时异常或error
 - 可以注解在类、类方法、接口、接口方法上，但是不推荐注解在接口和接口方法上。另一方面得注解在public方法上，注解在private和protected方法上就是在内部调用的过程中是不会抛出异常的
+
+### @Cacheable
+
 
 #### propagation属性
 

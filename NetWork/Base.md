@@ -12,7 +12,9 @@
 
 #### 三次握手
 
+SYN
 
+Syn sequence number
 
 ##### 过程
 
