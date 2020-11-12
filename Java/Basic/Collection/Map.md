@@ -282,3 +282,9 @@ head和tail作为LinkedHashMap的两端，accessOrder控制的是元素存储在
 有序map
 
 ## ConcurrentHasMap
+
+
+```java
+// map get方法的failback机制，如果map中存在这个key，则返回这个key 对应的值，不存在则返回给的defaultVlue
+Map.getOrDefault(Object key, V defaultValue)
+```

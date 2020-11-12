@@ -29,11 +29,15 @@
 
 - **思爱普(中国)有限公司( 2016年6月 ~ 至今)**
 
-   当前我所在的部门是Logistical Business Network，主要是负责SAP在供应链中，对ERP中的Inbound和OutBound订单进行追踪与追溯。在进入SAP第一年，我主要参与PoC以及与其他公司的联合创新项目的开发，开发的项目参加过的大型展会有，16年与17年的工博会以及17年的SAP Select。之后工作重心开始转移到正式产品的开发，在项目中使用的开发语言是Java，主要负责后端开发以及担任Scrum master的角色，参与产品在Cloud上集成部署，项目后端代码的review。同时，参与过公司内部的Scrum培训，并在日常开发中成功实施了这一敏捷开发策略。
+   当前我所在的部门是Business Network，主要是负责SAP在供应链中，对ERP中的Inbound和OutBound订单进行追踪与追溯。在进入SAP第一年，我主要参与PoC以及与其他公司的联合创新项目的开发，开发的项目参加过的大型展会有，16年与17年的工博会以及17年的SAP Select。之后工作重心开始转移到正式产品的开发，在项目中使用的开发语言是Java，主要负责后端开发以及担任Scrum master的角色，参与产品在Cloud上集成部署，项目后端代码的review。同时，参与过公司内部的Scrum培训，并在日常开发中成功实施了这一敏捷开发策略。
 
 ## <img src="assets/project-diagram-solid.svg" width="30px"> 项目经历
 
-- **SAP LBN Connectivity For Partner Onboarding (2020年3月 - 至今)**
+- **SAP Business Network Core engine (2020年9月 - 至今)**
+
+  这个项目包含很多MicroServices，在这个阶段主要新增了一个功能是将同步请求通过Kafka的消息队列改成异步请求，我主要在项目中负责后端开发，负责前期Kafka调研,PoC实现，以及后期部分业务模块的开发。
+
+- **SAP Business Network Manage Model App (2020年3月 - 2020年9月)**
 
   该项目主要是提供灵活的建模方式，帮助客户根据自己的业务逻辑创建数据模型，用于之后的各类订单的追踪追溯。我在该项目中，主要的角色是前端开发，根据前端Architect以及UI5的guideline，对当前的代码进行重构，帮助其他同事提高开发效率。
 
@@ -54,7 +58,7 @@
 
 - 主要使用的开发语言是JAVA，了解Javascript和Python
 - 熟悉的后端开发框架有Spring boot, Spring Cloud, Mybatis, Olingo，EclipseLink-JPA，了解前端框架有SAPUI5和Vue
-- 熟悉的数据库有Mysql，Hana，Redis
+- 熟悉的数据库有Mysql，Hana，Kafka
 - 熟悉版本管理工具SVN，Maven和Git，了解自动化部署工具Jenkins
 - 熟悉软件开发的流程和规范；
 - 良好的英语听说读写能力；
