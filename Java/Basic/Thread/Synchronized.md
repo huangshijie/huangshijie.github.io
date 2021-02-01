@@ -2,16 +2,16 @@
 
 ## Overview
 
-synchronized，Java关键字，同步锁，可以用于修饰实例方法、静态方法、代码块。主要作用有三个：
+synchronized，Java 关键字，同步锁，可以用于修饰实例方法、静态方法、代码块。主要作用有三个：
 
 1. 确保线程互斥的访问同步代码
 2. 保证共享变量的修改能够及时可见
 3. 有效解决重排序问题
 
-### Synchronized怎么用
+### Synchronized 怎么用
 
-- 修饰实例方法(实例方法就是非static方法，是实例中的方法，不属于整个类)，所以该同步锁作用于当前实例，进入同步代码前需要获得当前实例的锁。
-- 修饰静态方法(类方法，用static修饰的方法，属于整个类不属于某个对象)，作用于当前类对象加锁，进入同步代码前要获得当前对象的锁。
+- 修饰实例方法(实例方法就是非 static 方法，是实例中的方法，不属于整个类)，所以该同步锁作用于当前实例，进入同步代码前需要获得当前实例的锁。
+- 修饰静态方法(类方法，用 static 修饰的方法，属于整个类不属于某个对象)，作用于当前类对象加锁，进入同步代码前要获得当前对象的锁。
 - 修饰代码块，指定加锁对象，对给定对象加锁，进入同步代码块前要获得指定对象的锁。就和常用的
 
   ```java
@@ -20,13 +20,13 @@ synchronized，Java关键字，同步锁，可以用于修饰实例方法、静�
     }
   ```
 
-### Synchronized主要作用
+### Synchronized 主要作用
 
 - 确保线程互斥的访问同步代码。
 - 保证共享变量的修改能够及时**可见**。
 - 有效解决指令重排的问题。
 
-## Synchronized是基于什么原理
+## Synchronized 是基于什么原理
 
 ### 举例
 
@@ -60,7 +60,7 @@ public class App {
 
 ```
 
-使用命令`javap -c App.class`对class进行反编译。结果如下：
+使用命令`javap -c App.class`对 class 进行反编译。结果如下：
 
 ```java
 Compiled from "App.java"
@@ -101,7 +101,17 @@ public class org.huang.Util.App {
 }
 ```
 
-可以看到反编译的字节码中包含有'**monitorenter**'和'**monitorexit**'，每个对象都有一个监视器锁(monitor)。当monitor被占用，则处于锁定状态，线程执行monitorenter指令尝试获取monitor的所有权：
+可以看到反编译的字节码中包含有'**monitorenter**'和'**monitorexit**'，每个对象都有一个监视器锁(monitor)。当 monitor 被占用，则处于锁定状态，线程执行 monitorenter 指令尝试获取 monitor 的所有权：
 
-1. 如果monitor的进入数为0，则该线程进入monitor，然后进入数设置为1，该线程即为monitor的所有者；
+1. 如果 monitor 的进入数为 0，则该线程进入 monitor，然后进入数设置为 1，该线程即为 monitor 的所有者；
 2. 如果线程
+
+### 偏向锁
+
+### 自旋锁
+
+### 轻量级锁
+
+### 重量级锁
+
+### 锁的优缺点对比

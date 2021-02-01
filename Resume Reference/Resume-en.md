@@ -31,15 +31,19 @@
 
   **Java Software Engineer**
 
-  Participate in backend service development and act as Scrum Master in project management. I'm now working in the department called the Logistical Business Network which is responsible for helping customer build better supply chain network. In my first year of SAP, I focused on the development of some PoC projects. These projects were co-innovation projects with companies such as Intel, Hikvision, Huawei, etc., and had successfully demonstrated at many large-scale exhibitions.
+  Participate in backend service development and act as Scrum Master in project management. I'm now working in the department called the Logistical Business Network which is responsible for helping customer build better supply chain network. In my first year of SAP, I focused on the development of some POC projects. These projects were co-innovation projects with companies such as Intel, Hikvision, Huawei, etc., and had successfully demonstrated at many large-scale exhibitions.
   After 2017, I turned to the development of product projects. In daily development, I'm mainly responsible for backend service development, API research, SDD writing and participate in the consciously deployment, integration and release of the project on SAP Cloud Platform. At the same time, I accepted the company's internal training on Scrum and successfully implemented this agile development strategy in daily development.
 
 
 ## <img src="assets/project-diagram-solid.svg" width="30px"> Project Experience
 
-- **SAP LBN Manage Models (2020.03 - present)**
+- **SAP Business Network Global Track&Trace Core Engine (2020.09 - present)**
+This project includes several microservices to support customers track their business process in supply chain. Currently, we use Kafka message queue to change the synchronous request to asynchronous request. I'm mainly responsible for Kafka research, POC implementation, and backend implementation.
 
-  It is a SaaS application to help customer to build flexible model based on their requirement, and provides various function to help customer integrate with their ERP system.
+
+- **SAP LBN Manage Models (2020.03 - 2020.09)**
+
+  It is a SaaS application to help customer to build flexible model based on their requirement and provides various function to help customer integrate with their ERP system.
   In this project, I'm responsible for front-end development. And I'm mainly focus on following guideline to extract common methods in UI side help improve junior colleague development process.
 
 - **SAP LBN Connectivity (2019.03 - 2020.03)**
@@ -62,7 +66,7 @@
 - Familiar with the process and specifications of software development;
 - Understand mainstream web framework, such as Spring, Spring boot, Spring Cloud, Mybatis, Olingo，EclipseLink-JPA etc.;
 - Basic front-end knowledge about UI5, Vue;
-- Basic database knowledge about Mysql, Hana, Redis, Rabbitmq;
+- Basic database knowledge about Mysql, Hana, Redis, Kafka;
 - Familiar with version control tool Git and SVN;
 - Skills of English listening, speaking, reading and writing;
 - Optimism, self-confidence, Have clear logical thinking skills, good communication skills and self-learning skills;
